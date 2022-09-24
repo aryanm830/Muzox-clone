@@ -2,6 +2,7 @@ function moveArrayElement(arr, fromIndex, toIndex) {
         arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
         return arr;
     }
+    const { EmbedBuilder }= require("discord.js")
 
 module.exports = {
   name: "jump",
@@ -19,8 +20,8 @@ module.exports = {
   const to = args[1] ? parseInt(args[1], 10) : null;
      
     if (from === null || to === null) {
-      const invalid = new MessageEmbed() 
-.setColor(`63e`)
+      const invalid = new EmbedBuilder() 
+.setColor(client.config.embedColor)
     .setDescription(`Invalid Usage: \`${prefix}jump\`\nCorect Usage: \`${prefix}jump [number]\``)
          message.channel.send(`invaild usage \n jump 10 1`)
     }

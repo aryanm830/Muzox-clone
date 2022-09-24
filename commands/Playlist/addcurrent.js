@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const db = require("../../schema/playlist");
 
 module.exports = {
@@ -17,16 +17,16 @@ module.exports = {
         const data = await db.findOne({ UserId: message.author.id, PlaylistName: Name });
         const player = client.poru.players.get(message.guild.id);
         if (!player.currentTrack) {
-            let thing = new MessageEmbed()
+            let thing = new EmbedBuilder()
                 .setColor(client.config.embedColor)
                 .setDescription("There is no music playing.");
             return message.reply({ embeds: [thing] });
         }
         if (!data) {
-            return message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
+            return message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
         }
         if (data.length == 0) {
-            return message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
+            return message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
         }
         const song = player.currentTrack.info;
         let oldSong = data.songs;
@@ -52,7 +52,7 @@ module.exports = {
 
                 }
             });
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(client.config.embedColor)
             .setAuthor(`Added Song To Playlist ${Name}`, message.author.displayAvatarURL({dynamic: true}))
             .setDescription(`<a:queue:987713106450980865> [${song.title.substring(0, 63)}](${song.uri})`)

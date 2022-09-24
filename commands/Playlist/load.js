@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { TrackUtils, Player } = require("poru");
 const playlists = require("../../schema/playlist");
 
@@ -40,7 +40,7 @@ module.exports = {
 
 
               const tracks =  p.songs;
-         const m = await message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<a:m_loading:1015561059786047558> Started loading **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
+         const m = await message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<a:m_loading:1015561059786047558> Started loading **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
              
                 for (let i = 0; i <= p.songs.length; i++) {
 
@@ -58,11 +58,11 @@ module.exports = {
 
                 
                 }
-await m.edit({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:success:984369679080509450> Loaded **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
+await m.edit({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:success:984369679080509450> Loaded **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
             });
 
         } catch (e) {
-            m.edit({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Can't load tracks from Playlist **${playlistName}**`)]})
+            m.edit({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Can't load tracks from Playlist **${playlistName}**`)]})
            console.log(e)
         }
 

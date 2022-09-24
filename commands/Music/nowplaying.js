@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageAttachment } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 let canvafy = require ("canvafy");
 
  module.exports = {
@@ -19,7 +19,7 @@ let player =  client.poru.players.get(message.guildId)
 .setTimestamp(player.position,  player.currentTrack.info.length)
       .setTitle(player.currentTrack.info.title)
     .build();
-      const attachment = new MessageAttachment(spotify.toBuffer(), 'nowplaying.png')
+      const attachment = new AttachmentBuilder(spotify.toBuffer(), 'nowplaying.png')
       const embed = {
         title:"Now Playing",
         color: client.config.embedColor,

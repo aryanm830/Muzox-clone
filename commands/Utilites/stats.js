@@ -44,11 +44,11 @@ const currentCPUUsage = (usage.user + usage.system) * 1000;
   const embed = new MessageEmbed()
         
         .setColor(`${client.config.embedColor}`)
-        .setAuthor({ name: "Bot Information", iconURL: "https://cdn.discordapp.com/avatars/887200832829915166/f7c0f0e57f8b9134aa455c2166fe2f25.png", url: "https://discord.gg/radio"})
+        .setAuthor({ name: "Bot Information", iconURL: client.user.displayAvatarURL, url: "https://discord.gg/bothub"})
         .setDescription(`What's up ${message.author.username}! I am ${client.user.username}, a cool discord music bot for your server!`)
         .addField(`<:stats:985100769520930816> Stats`,
         `➜ **${client.guilds.cache.size}** Servers\n➜ **${users}** Users\n➜ **${client.channels.cache.size}** Channels\n`)
-        .addField(`Command Used By You`,`${data.count} Message commands\n${data.ccount} Slash Commands `)
+        .addField(`Command Used By You`,`${data.count}Commands`)
 
         .addField(`<:links:985105785921081344> Links`,
         `➜ [Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands)\n➜ [Support Server](https://discord.gg/wrCzESkVzK)\n➜ [Vote](https://top.gg/bot/${client.user.id}/vote)`)
@@ -58,8 +58,8 @@ const currentCPUUsage = (usage.user + usage.system) * 1000;
         .addField(`<:dev:978563383580295188> Developers`,`\`\`\`js\n! ARYAN.NFT#0082\nBraylon ඞ#5950\`\`\``)
         .addField(`<:djs:984372533002395720> Discord.JS Version`,`\`\`\`js\n${discordJSVersion}\`\`\``)
         .addField(`<:nodejs:984372538236891196> Node.JS Version`,`\`\`\`js\n${process.version}\`\`\``)
-        .addField(`<:premiumbadge:967414570169802832> Poru Client Version`,`\`\`\`js\nLatest\`\`\``)
-        .setThumbnail(`https://cdn.discordapp.com/avatars/887200832829915166/f7c0f0e57f8b9134aa455c2166fe2f25.png`)
+        .addField(`<:premiumbadge:967414570169802832> Poru  Version`,`\`\`\`js\n${client.poru.version}\`\`\``)
+        .setThumbnail(client.user.displayAvatarURL)
         .setFooter(`Thank you for your continued support to ${client.user.username}. <3`)
         message.channel.send({embeds: [embed]})
 

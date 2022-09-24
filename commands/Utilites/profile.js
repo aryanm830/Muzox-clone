@@ -1,4 +1,4 @@
-const { MessageEmbed, version, MessageActionRow, MessageButton, Message } = require("discord.js");
+const { EmbedBuilder, version, ActionRowBuilder, ButtonBuilder, Message } = require("discord.js");
 
 
 
@@ -47,13 +47,13 @@ try{
  if(badges === "") badges = "`No Badge Available`";
 }
 
-      const row = new MessageActionRow()
-           .addComponents(new MessageButton()
+      const row = new ActionRowBuilder()
+           .addComponents(new ButtonBuilder()
     .setLabel("Support Server")
     .setStyle("LINK")
     .setURL(`https://discord.gg/wrCzESkVzK`)
 			);
-      const embed = new MessageEmbed()
+      const embed = new EmbedBuilder()
       .setAuthor(`${client.user.username}'s Profile For ${user.username}#${user.discriminator}`, client.user.displayAvatarURL({dynamic: true}), "https://discord.gg/eYdCRGqrnY")
       .setThumbnail(user.displayAvatarURL({dynamic: true}))
       .setColor(`${client.config.embedColor}`)

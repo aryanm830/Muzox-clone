@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const db = require("../../schema/playlist");
 
 module.exports = {
@@ -14,18 +14,18 @@ module.exports = {
         const Name = args[0];
         const data = await db.findOne({ UserId: message.author.id, PlaylistName: Name });
         if (!data) {
-            return message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
+            return message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
         }
         if (data.length == 0) {
-            return message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
+            return message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> You don't have any Playlist named **${Name}**.`)] });
         }
         const Options = args[1];
         if (!Options || isNaN(Options)) {
-            return message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Invalid track number provided for Playlist ${Name}.`)] });
+            return message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Invalid track number provided for Playlist ${Name}.`)] });
         }
         let tracks = data.Playlist;
         if (Number(Options) >= tracks.length || Number(Options) < 0) {
-            return message.reply({ embeds: [new MessageEmbed().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Invalid track number provided for Playlist ${Name}.`)] });
+            return message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Invalid track number provided for Playlist ${Name}.`)] });
 
         }
         await db.updateOne({
@@ -37,7 +37,7 @@ module.exports = {
                     songs: data.songs[Options]
                 }
             });
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
             .setColor(client.config.embedColor)
             .setAuthor(`Removed Song From Playlist ${Name}`, message.author.displayAvatarURL({dynamic: true}), "https://discord.gg/wrCzESkVzK")
             .setDescription(`<a:queue:987713106450980865> [${tracks[Options].title.substring(0, 63)}](${tracks[Options].uri})`);

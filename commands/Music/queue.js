@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const ms = require("ms");
 module.exports = {
   name: "queue",
@@ -10,7 +10,7 @@ module.exports = {
     const player = client.poru.players.get(message.guild.id)
 
      const queue = player.queue.length > 9 ? player.queue.slice(0, 9) : player.queue;
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(client.config.embedColor)
             .setTitle('Now Playing')
             .setThumbnail(`https://img.youtube.com/vi/${player.currentTrack.info.identifier}/default.jpg`)

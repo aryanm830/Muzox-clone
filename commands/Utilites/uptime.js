@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { readdirSync } = require("fs");
 module.exports = {
   name: "uptime",
@@ -9,7 +9,7 @@ module.exports = {
   run: async (client, message, args) => {
 const d = Math.round((Date.now() - client.uptime)/1000);
       const ms = require("ms");
-      const em = new MessageEmbed()
+      const em = new EmbedBuilder()
       .setColor(client.config.embedColor)
 .setAuthor(`Last Rebooted`, client.user.displayAvatarURL())
       .setDescription(`Uptime: ${ms(client.uptime)}\nLast Restarted: <t:${d}:R>`)

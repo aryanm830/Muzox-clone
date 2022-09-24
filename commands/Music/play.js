@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "play",
 
@@ -36,7 +36,7 @@ module.exports = {
 if(player.queue.length > 0) {
 
       return message.channel.send({ embeds: [
-new MessageEmbed()
+new EmbedBuilder()
 .setAuthor('Added Playlist To Queue', message.author.displayAvatarURL({dynamic: true}))
              .setColor(client.config.embedColor)
              .setDescription(`<a:emoji_46:938388856095514654> **${resolve.tracks.length}** Tracks From **${resolve.playlistInfo.name}**\n\n**Requester: **<@${message.author.id}>`),
@@ -56,7 +56,7 @@ new MessageEmbed()
         if (!player.isPlaying && !player.isPaused) return player.play();
       if(player.queue.length > 0){
      return message.channel.send({ embeds: [
-new MessageEmbed()
+new EmbedBuilder()
 .setAuthor('Added Song To Queue', message.author.displayAvatarURL({dynamic: true}))
              .setColor("#63e963")
              .setDescription(`<a:emoji_46:938388856095514654> [${tracks[0].info.title}](${tracks[0].info.uri})\n\n**Requester: **<@${message.author.id}>`)   
@@ -64,7 +64,7 @@ new MessageEmbed()
                            });
         }
     }else{
-      const not = new MessageEmbed() 
+      const not = new EmbedBuilder() 
 .setColor(`#ff0000`)
 .setDescription(`There were no results found try to be more specific as possible once check song title.`) 
 
