@@ -3,12 +3,12 @@ const { MessageEmbed, WebhookClient, Options, LimitedCollection } = require('dis
 const { Webhooks: {bot_error} } = require('./config.json')
 const { Poru ,options} = require("poru");
 const osUtils = require("os-utils"); 
-const RadioClient = discord.Client;
+const Client = discord.Client;
 const ms = require("ms");
 const mongoose = require("mongoose");
 require("dotenv").config()
 
-const client = new RadioClient({
+const client = new Client({
   messageCacheLifetime: 0,
   fetchAllMembers: false,
   messageCacheMaxSize: 0,
@@ -37,33 +37,17 @@ getComparisonTimestamp: e => e.editedTimestamp ?? e.createdTimestamp,
 });
 const { Database } = require("quickmongo");
 
-client.login(process.env.TOKEN).catch(e => console.log("No token provided"));
-const PoruOptions = {
+client.login(process.env.TOKEN).catch(e => console.log(e));
+
+
+client.config = require("./botconfig/config.json");
+client.poru = new Poru(client, client.config.nodes,{
   reconnectTime: 600,
-  resumeKey: "worldmusic",
+  resumeKey: "muzox",
   resumeTimeout: 600000,
   defaultPlatform: "scsearch"
     
-};
-
-client.config = require("./botconfig/config.json");
-client.poru = new Poru(client, client.config.nodes,PoruOptions, {
-   
-  spotify:{
-   clientID:"cb41529dc3bd4d8f8a240dbee0fff4e8",
-  clientSecret:"bcca82f42930498aa385a8289fdf276b",
-        playlistLimit: 100, // The amount of pages to load when a playlist is searched with each page having 50 tracks.
-  albumLimit: 50, // The amount of pages to load when a album is searched with each page having 50 tracks.
-  artistLimit: 50, // The amount of pages to load when a artist is searched with each page having 50 tracks.
-  searchMarket: 'IN',
-   }, 
-    deezer: {
-        playlistLimit: 10
-    }, 
-    apple: {
-        playlistLimit: 5
-    }
-})
+});
 client.commands = new discord.Collection();
 client.config = require('./config.json');
 client.emoji = require('./utils/emoji.json');

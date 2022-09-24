@@ -20,8 +20,8 @@
   "nodes":[
     {
       "name":"main",
-      "host":"172.104.194.62",
-      "port": 9844,
+      "host":"lavalink.rukchadisa.live",
+      "port": 8080,
       "password": "youshallnotpass",
       "secure": false
     }

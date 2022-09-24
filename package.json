@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ARYANOP-Radio/Muzox-clone/issues"
   },
-  "homepage": "https://github.com/ARYANOP-Radio/Muzox-clone#readme"
+  "homepage": "https://github.com/ARYANOP-Radio/Muzox-clone#readme",
+  "dependencies": {
+    "poru": "^3.3.2"
+  }
 }
