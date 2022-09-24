@@ -1,0 +1,23 @@
+{
+  "name": "muzox-clone",
+  "version": "1.0.0",
+  "description": "a clone version of muzox in poru",
+  "main": "shard.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARYANOP-Radio/Muzox-clone.git"
+  },
+  "keywords": [
+    "Music",
+    "bestbot"
+  ],
+  "author": "ARYANOP-Radio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ARYANOP-Radio/Muzox-clone/issues"
+  },
+  "homepage": "https://github.com/ARYANOP-Radio/Muzox-clone#readme"
+}
