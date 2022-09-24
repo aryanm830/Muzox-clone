@@ -1,5 +1,5 @@
 const {
-    MessageEmbed
+    EmbedBuilder
   } = require(`discord.js`);
   module.exports = {
     name: `clearfilter`,    
@@ -13,7 +13,7 @@ const {
       const player = client.poru.players.get(message.guild.id);
       
           await player.filters.clearFilters;
-      const emb = new MessageEmbed()
+      const emb = new EmbedBuilder()
       .setColor(client.config.embedColor)
       .setDescription(`<:success:984369679080509450> **Cleared All Filters**`)
           

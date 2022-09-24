@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "bassboost",
   usage: ['bb','bassboost'],
@@ -12,7 +12,7 @@ module.exports = {
 
 player.filters.setBassboost(!player.filters.bassboost)
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
 .setColor(client.config.embedColor)
  .setDescription(`**Bassboost** mode is now ${player.filters.bassboost ? "**enabled**" : "**disabled**"} `)
 message.channel.send({embeds: [embed]})

@@ -1,4 +1,4 @@
-const { MessageEmbed, WebhookClient } = require('discord.js');
+const { EmbedBuilder, WebhookClient } = require('discord.js');
 const { Webhooks: {server_remove}} = require('../config.json');
 const moment = require('moment');
 
@@ -22,7 +22,7 @@ let links = `https://cdn.discordapp.com/banners/`+guild.id+`/`+guild.banner+`.`+
  emoji = "<:verified3:918906111359340594>";
  else if(!guild.partnered && !guild.verified)
  emoji = "<:cross1:853965073383292970>";
-  const embed = new MessageEmbed()
+  const embed = new EmbedBuilder()
     .setDescription(`Id: **${guild.id}**\nName: **${guild.name}**\nDiscord Level: ${emoji}\nMemberCount: \`${guild.memberCount + 1}\`\nCreated At: <t:${Math.round(guild.createdTimestamp/1000)}> (<t:${Math.round(guild.createdTimestamp/1000)}:R>)\nJoined At: <t:${Math.round(guild.joinedTimestamp/1000)}> (<t:${Math.round(guild.joinedTimestamp/1000)}:R>)`)
     .addField(`**Owner**`, `Info: **${guild.members.cache.get(own.id) ? guild.members.cache.get(own.id).user.tag : "Unknown user"} (${own.id})**\nMentions: <@${own.id}>\nCreated At: <t:${Math.round(own.user.createdTimestamp/1000)}> (<t:${Math.round(own.user.createdTimestamp/1000)}:R>)`)
     .addField(`**${client.user.username}'s Total Servers**`, `\`\`\`js\n${client.guilds.cache.size}\`\`\``, true)

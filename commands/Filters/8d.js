@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "8d",
   usage: `8d`,
@@ -11,7 +11,7 @@ module.exports = {
 
 player.filters.set8D(!player.filters._8d)
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
 .setColor(client.config.embedColor)
  .setDescription(`**8d** mode is now ${player.filters._8d ? "**enabled**" : "**disabled**"} `)
 message.channel.send({embeds: [embed]})

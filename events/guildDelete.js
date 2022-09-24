@@ -1,4 +1,4 @@
-const { MessageEmbed, WebhookClient } = require('discord.js');
+const { EmbedBuilder, WebhookClient } = require('discord.js');
 const { Webhooks: {server_remove} } = require('../config.json');
 const moment = require('moment');
 
@@ -12,7 +12,7 @@ client.guilds.cache.forEach((guild) => {
     mcount += guild.memberCount
 })
 let links = `https://cdn.discordapp.com/banners/`+guild.id+`/`+guild.banner+`.`+`webp?size=1024`;
-  const embed = new MessageEmbed()
+  const embed = new EmbedBuilder()
     .setDescription(`Id: **${guild.id}**\nName: **${guild.name}**\nMemberCount: \`${guild.memberCount + 1}\`\nCreated At: <t:${Math.round(guild.createdTimestamp/1000)}> (<t:${Math.round(guild.createdTimestamp/1000)}:R>)\nJoined At: <t:${Math.round(guild.joinedTimestamp/1000)}> (<t:${Math.round(guild.joinedTimestamp/1000)}:R>)`)
       
     .addField(`**${client.user.username}'s Total Servers**`, `\`\`\`js\n${client.guilds.cache.size}\`\`\``, true)

@@ -19,15 +19,10 @@ await client.db.connect();
  
     setInterval(() => {
       const statuses = [
-        `World Music`,
+        `Poru Music`,
       ];
       const status = statuses[Math.floor(Math.random() * statuses.length)];
       client.user.setActivity(status, { type: "LISTENING" });
     }, 60000);
-    const users = await User.find();
-    for (let user of users) {
-      client.userSettings.set(user.Id, user);
-    }
-  
-    require('../handlers/premium')(client)
+    
 }

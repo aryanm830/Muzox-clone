@@ -1,5 +1,5 @@
 const {
-    MessageEmbed
+    EmbedBuilder
   } = require(`discord.js`);
   module.exports = {
     name: `china`,
@@ -19,7 +19,7 @@ const {
           "rate": 1.15
         })}else{player.filters.setTimescale(false)}
       
-      const emb = new MessageEmbed()
+      const emb = new EmbedBuilder()
       .setColor(client.config.embedColor)
       .setDescription(`**China** mode is now ${player.filters.timescale ? "**enabled**" : "**disabled**"} `)
           

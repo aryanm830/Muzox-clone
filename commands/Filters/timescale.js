@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "timescale",
   usage: `timescale`,
@@ -11,7 +11,7 @@ module.exports = {
 
 player.filters.setTimescale(!player.filters.timescale)
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
 .setColor(client.config.embedColor)
  .setDescription(`**Timescale** mode is now ${player.filters.timescale ? "**enabled**" : "**disabled**"} `)
 message.channel.send({embeds: [embed]})

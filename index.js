@@ -1,5 +1,5 @@
 const discord = require("discord.js");
-const { MessageEmbed, WebhookClient, Options, LimitedCollection } = require('discord.js')
+const { EmbedBuilder, WebhookClient,  GatewayIntentBits } = require('discord.js')
 const { Webhooks: {bot_error} } = require('./config.json')
 const { Poru ,options} = require("poru");
 const osUtils = require("os-utils"); 
@@ -9,31 +9,25 @@ const mongoose = require("mongoose");
 require("dotenv").config()
 
 const client = new Client({
-  messageCacheLifetime: 0,
-  fetchAllMembers: false,
-  messageCacheMaxSize: 0,
-  restTimeOffset: 0,
-    
-makeCache: Options.cacheWithLimits({
-
-...Options.defaultMakeCacheSettings,
-
-MessageManager: {
-sweepInterval: 300,
-sweepFilter: LimitedCollection. filterByLifetime({
-Lifetime: 1800,
-getComparisonTimestamp: e => e.editedTimestamp ?? e.createdTimestamp,
-})
-    }
-                                                 }),
   restWsBridgetimeout: 100,
   allowedMentions: {
     parse: ["roles", "users", "everyone"],
     repliedUser: true,
   },
-  partials: ["MESSAGE", "CHANNEL", "REACTION"],
-  intents: [
-    "GUILDS","GUILD_BANS", "GUILD_VOICE_STATES", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
+  
+    failIfNotExists: true,
+    allowedMentions: {
+      parse: ['roles', 'users', 'everyone'],
+      repliedUser: false,
+    },
+    intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildVoiceStates,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.MessageContent,
+      GatewayIntentBits.GuildBans,
+
+    ],
 });
 const { Database } = require("quickmongo");
 
@@ -74,7 +68,7 @@ client.on('interactionCreate', async interaction => {
     
     if(interaction.customId === 'DELETE_BUT')
     {
-    const em = new MessageEmbed()
+    const em = new EmbedBuilder()
     .setDescription(`Only Bot Owner Can Use This Button`)
     .setColor(`#ff0000`)
 
@@ -90,14 +84,14 @@ const web = new WebhookClient({ url: bot_error });
 
 process.on('unhandledRejection', (error) => {
 console.log(error);
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
     .setColor(client.config.embedColor)
     .setAuthor(`UnhandledRejection Error`)
     .setDescription(`Error Caught by ${client.user.username}\n\`\`\`js\n${error}\`\`\``)
   web.send({embeds: [embed]})
 });
 //now creating interaction event
-["commands","events","slash","PoruEvent"].forEach(handler => {
+["commands","events","PoruEvent"].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
 

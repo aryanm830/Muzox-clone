@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "rotation",
   usage: `rotation`,
@@ -11,7 +11,7 @@ module.exports = {
 
 player.filters.setRotation(!player.filters.rotation)
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
 .setColor(client.config.embedColor)
  .setDescription(`**Rotation** mode is now ${player.filters.rotation ? "**enabled**" : "**disabled**"} `)
 message.channel.send({embeds: [embed]})

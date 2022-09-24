@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "vibrato",
   usage: `vibrato`,
@@ -11,7 +11,7 @@ module.exports = {
 
 player.filters.setVibrato(!player.filters.vibrato)
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
 .setColor(client.config.embedColor)
  .setDescription(`**Vibrato** mode is now ${player.filters.vibrato ? "**enabled**" : "**disabled**"} `)
 message.channel.send({embeds: [embed]})

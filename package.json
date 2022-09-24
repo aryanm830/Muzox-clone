@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ARYANOP-Radio/Muzox-clone#readme",
   "dependencies": {
+    "discord.js": "^14.4.0",
     "poru": "^3.3.2"
   }
 }

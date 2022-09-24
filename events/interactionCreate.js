@@ -1,17 +1,18 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js')
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js')
 const User = require("../Models/User");
 module.exports.run = async (client, interaction, args) => {
-  const music = new MessageEmbed();
-  const embed = new MessageEmbed();
-  const premrow = new MessageActionRow()
-     .addComponents(new MessageButton()
+  const music = new EmbedBuilder();
+  music.setFooter({name:`Requested by ${interaction.user.tag}`})
+  const embed = new EmbedBuilder();
+  const premrow = new ActionRowBuilder()
+     .addComponents(new ButtonBuilder()
      .setLabel("Premium")
      .setStyle("LINK")
      .setURL("https://discord.gg/wrCzESkVzK"),
-     new MessageButton()
+     new ButtonBuilder()
      .setLabel("Vote")
      .setStyle("LINK")
-     .setEmoji("<:vote:985926662552178748>")
+     .setEmoji("985926662552178748")
      .setURL("https://top.gg/"));
         
      music.setColor(client.config.embedColor)
@@ -30,25 +31,29 @@ if(interaction.isButton()) {
          if(interaction.guild.me.voice.channel && interaction.guild.me.voice.channelId === interaction.member.voice.channelId)
          {
             
-   const But3 = new MessageButton().setCustomId("pause").setLabel(!player.isPaused ? "Resume" : "Pause").setStyle(!player.paused ? "SUCCESS" : "SECONDARY");
+   const pause = new ButtonBuilder().setCustomId("pause").setLabel("").setEmoji(!player.isPaused ? "1023159510581379082" : "1021424523146444821").setStyle(!player.isPaused ? "SECONDARY" : "SUCCESS");
 
-   const But4 = new MessageButton().setCustomId("loop").setLabel("Loop").setStyle("SECONDARY");
 
-           const But5 = new MessageButton().setCustomId("skip").setLabel("Skip").setStyle("SECONDARY");
+   const loop = new ButtonBuilder().setCustomId("loop").setLabel("").setEmoji("1021424527424626718").setStyle("SECONDARY");
+    
+   const forward = new ButtonBuilder().setCustomId("forward").setLabel("").setEmoji("1021424525281337344").setStyle("SECONDARY");
+
+   const previous = new ButtonBuilder().setCustomId("previous").setLabel("").setEmoji("1023159828643840022").setStyle("SECONDARY");
+
+   const skip = new ButtonBuilder().setCustomId("skip").setLabel("").setEmoji("1023159160604463134").setStyle("SECONDARY");
+
+  const shuffle = new ButtonBuilder().setCustomId("shuffle").setLabel("").setEmoji("1021424524023050250").setStyle("SECONDARY");
+
+  const stop = new ButtonBuilder().setCustomId("stop").setLabel("").setEmoji("1021424526606737459").setStyle("SECONDARY");
+  const queue = new ButtonBuilder().setCustomId("queue").setLabel("").setEmoji("1023160060802768966").setStyle("SECONDARY");
+
    
-
-   const But6 = new MessageButton().setCustomId("shuffle").setLabel("Shuffle").setStyle("SECONDARY");
-
    
-
-   const But8 = new MessageButton().setCustomId("stop").setLabel("Stop").setStyle("DANGER");
-
-   
-   
-   const row = new MessageActionRow().addComponents(But3, But5, But4, But6, But8);
+  const row = new ActionRowBuilder().addComponents(previous,rewind,pause,forward,skip);
+  const row1 = new ActionRowBuilder().addComponents(loop,shuffle,queue,stop);
    
   try{
-    player.message?.edit({components: [row]})
+    player.message?.edit({components: [row] [row1]})
   }catch(e) {
 }
            player.pause(!player.isPaused);
@@ -181,12 +186,12 @@ if(interaction.isButton()) {
        }
         if(interaction.customId === 'Done')
     {
-        const tt = new MessageEmbed()
+        const tt = new EmbedBuilder()
     .setDescription(`Thanks for your [feedback](https://discord.gg/eYdCRGqrnY)!`)
     .setColor(`#63e943`)
         return interaction.reply({embeds: [tt], ephemeral: true});
         
-        const ft = new MessageEmbed()
+        const ft = new EmbedBuilder()
         .setColor(`#63e963`)
         .setTitle(`${interaction.user.username}#${interaction.user.discriminator} (${interaction.user.id}) Feedback:`)
         .setDescription(`${args}`)
@@ -199,7 +204,7 @@ if(interaction.isButton()) {
 
     {
 
-        const tt = new MessageEmbed()
+        const tt = new EmbedBuilder()
 
     .setDescription(`Thanks for your [feedback](https://discord.gg/eYdCRGqrnY)!`)
 
@@ -217,12 +222,12 @@ if(interaction.isButton()) {
             try{
  let lm = channel.lastMessage.content;
  
- const em = new MessageEmbed()
+ const em = new EmbedBuilder()
  .setColor(client.config.embedColor)
  .setDescription(lm)
  interaction.reply({embeds:[em], ephemeral: true})
                }catch(error) {
- const em = new MessageEmbed()
+ const em = new EmbedBuilder()
  .setColor(client.config.embedColor)
  .setDescription(`No Annoncement has been made`)
  interaction.reply({embeds:[em], ephemeral: true})
@@ -234,12 +239,12 @@ if(interaction.isButton()) {
            try{
  let lm = channel.lastMessage.content;
  
- const em = new MessageEmbed()
+ const em = new EmbedBuilder()
  .setColor(client.config.embedColor)
  .setDescription(lm)
  interaction.reply({embeds:[em], ephemeral: true})
                }catch(error){
- const em = new MessageEmbed()
+ const em = new EmbedBuilder()
  .setColor(client.config.embedColor)
  .setDescription(`No Patches has been released`)
  interaction.reply({embeds:[em], ephemeral: true})

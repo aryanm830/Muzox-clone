@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { readdirSync } = require("fs");
 module.exports = {
   name: "help",
@@ -37,9 +37,9 @@ description: "Gives My All command info",
         categories.push(data);
       });
 
-      const embed = new MessageEmbed()
-        .setAuthor("Commands", client.user.displayAvatarURL())
-        .setDescription(`• My Prefix For This Server is ${prefix}\n• For Command info Use ${prefix}help [command]\n• A new alert have arrived type ${prefix}alert to see it`)
+      const embed = new EmbedBuilder()
+        .setAuthor({name:"Muzox Commands", iconURL: client.user.displayAvatarURL()})
+        .setDescription(`• My Prefix For This Server is ${prefix}\n• For Command info Use ${prefix}help [command]\n❗ Alert`)
         .addFields(categories)
 
         .setFooter(`Type ${prefix}help <command name> for more information  on a command!`)
@@ -54,14 +54,14 @@ description: "Gives My All command info",
         );
 
       if (!command) {
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
           .setTitle(`Invalid command! Use \`${prefix}help\` for all of my commands!`)
 
           .setColor(client.config.embedColor);
         return message.channel.send({embeds: [embed]});
       }
 
-      const embed = new MessageEmbed()
+      const embed = new EmbedBuilder()
         .setTitle("Command: " + args[0])
       
         .addField(

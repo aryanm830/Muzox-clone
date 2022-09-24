@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "karaoke",
   usage: `karaoke`,
@@ -11,7 +11,7 @@ module.exports = {
 
 player.filters.setKaraoke(!player.filters.karaoke)
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
 .setColor(client.config.embedColor)
  .setDescription(`**karaoke** mode is now ${player.filters.karaoke ? "**enabled**" : "**disabled**"} `)
 message.channel.send({embeds: [embed]})
