@@ -42,7 +42,7 @@ description: "Gives My All command info",
         .setDescription(`• My Prefix For This Server is ${prefix}\n• For Command info Use ${prefix}help [command]\n❗ Alert`)
         .addFields(categories)
 
-        .setFooter(`Type ${prefix}help <command name> for more information  on a command!`)
+        .setFooter({text: `Type ${prefix}help <command name> for more information  on a command!`})
         
         .setColor(client.config.embedColor);
       return message.channel.send({ embeds: [embed] });

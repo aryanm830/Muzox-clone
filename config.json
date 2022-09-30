@@ -1,5 +1,5 @@
 {
-  "prefix":",",
+  "prefix":"",
   "db": "",
   "logs":"920657546988093501",
     "embedColor": "#ff0000",
@@ -19,12 +19,19 @@
   },
   "nodes":[
     {
-      "name":"main",
-      "host":"lavalink.rukchadisa.live",
-      "port": 8080,
-      "password": "youshallnotpass",
-      "secure": false
-    }
+      "name": "NODE-1",
+      "host": "lavalink.oops.wtf",
+      "port": 443,
+      "password": "www.freelavalink.ga",
+      "secure": true
+  },
+  {
+      "name": "NODE-2",
+      "host": "node1.kartadharta.xyz",
+      "port": 443,
+      "password": "kdlavalink",
+      "secure": true
+  }
   ]
 }
   

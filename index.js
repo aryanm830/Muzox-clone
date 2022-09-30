@@ -34,7 +34,7 @@ const { Database } = require("quickmongo");
 client.login(process.env.TOKEN).catch(e => console.log(e));
 
 
-client.config = require("./botconfig/config.json");
+client.config = require("./config.json");
 client.poru = new Poru(client, client.config.nodes,{
   reconnectTime: 600,
   resumeKey: "muzox",

@@ -9,21 +9,18 @@ module.exports.run = async (client, message) => {
         
       let user = await User.findOne({ userId: message.author.id }) || new User({ userId: message.author.id })
       
-      if (data && data.Channel && message.channelId === data.Channel) return client.emit("setupSystem", message);
-let datab = ['884067115110395925','889005501701029919','751100746434347090'];
 const premrow = new ActionRowBuilder()
      .addComponents(new ButtonBuilder()
      .setLabel("Premium")
-     .setStyle("LINK")
+     .setStyle("Link")
      .setURL("https://discord.gg/wrCzESkVzK"),
      new ButtonBuilder()
      .setLabel("Vote")
-     .setStyle("LINK")
+     .setStyle("Link")
      .setEmoji("<:vote:985926662552178748>")
      .setURL("https://top.gg/"));
         
 
- if(datab.includes(message.author.id)) prefix = "";
       
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
 var m = "";
@@ -43,25 +40,25 @@ const ch = message.guild.channels.cache.get(p1.voiceChannel);
 }
         try {
     if (message.content.match(mention)) {
-        prefix = client.prefix;
+    
       const row = new ActionRowBuilder()
            .addComponents(
         new ButtonBuilder()
     .setLabel("Invite Me")
-    .setStyle("LINK")
+    .setStyle("Link")
     .setURL(`https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`),
     new ButtonBuilder()
     .setLabel("Support Server")
-    .setStyle("LINK")
+    .setStyle("Link")
     .setURL("https://discord.gg/wrCzESkVzK"),
     new ButtonBuilder()
     .setLabel("Vote Me")
-    .setStyle("LINK")
+    .setStyle("Link")
     .setURL("https://top.gg/")
 			);
       const embed = new EmbedBuilder()
         .setColor(client.config.embedColor)
-        .setAuthor({name:'Settings For This Server',iconURL:client.user.displayAvatarURL })
+        .setAuthor({name:'Settings For This Server',iconURL:client.user.displayAvatarURL() })
       
         .setDescription(`• My prefix here is \`${prefix}\` and / \nVoice Region: \`${m}\`\nServer Id: \`${message.guild.id}\`\n\nYou can play music by joining a voice channel and typing \`${prefix}play\`.\nType \`${prefix}help\` To Get All Commands Help Menu.`);
       message.channel.send({embeds: [embed], components: [row]})
@@ -95,35 +92,13 @@ const ch = message.guild.channels.cache.get(p1.voiceChannel);
 
   let command = client.commands.get(cmd)
 
-  const cooldowns = new Map();
   
   if (!command) command = client.commands.get(client.aliases.get(cmd))
   const player = client.poru.players.get(message.guild.id);
   const memberChannel = message.member.voice.channelId;
-  const botChannel = message.guild.me.voice.channelId;
+  const botChannel = message.guild.members.me.voice.channelId;
  //If cooldowns map doesn't have a command.name key then create one.
- if(!cooldowns.has(command.name)){
-  cooldowns.set(command.name, new Discord.Collection());
-}
-const current_time = Date.now();
-const time_stamps = cooldowns.get(command.name);
-const cooldown_amount = (command.cooldown) * 1000;
-
-    //If time_stamps has a key with the author's id then check the expiration time to send a message to a user.
-    if(time_stamps.has(message.author.id)){
-      const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
-
-      if(current_time < expiration_time){
-          const time_left = (expiration_time - current_time) / 1000;
-
-          return message.reply(`Please wait ${time_left.toFixed(1)} more seconds before using ${command.name}`);
-      }
-  }
-
-  //If the author's id is not in time_stamps then add them with the current time.
-  time_stamps.set(message.author.id, current_time);
-  //Delete the user's id once the cooldown is over.
-  setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
+ 
   if (!command) return
 
     

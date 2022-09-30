@@ -7,7 +7,7 @@ module.exports = class Logger {
 		switch (type) {
 	
 		case "log": {
-			return console.log(`[${chalk.gray(date)}]: [${chalk.black.bgBlue(type.toUpperCase())}] ${content}`);
+			return console.log(`[${chalk.gray(date)}]: [${chalk.black.bgBlue('API')}] ${content}`);
 		}
 		case "warn": {
 			return console.log(`[${chalk.gray(date)}]: [${chalk.black.bgYellow(type.toUpperCase())}] ${content}`);

@@ -1,27 +1,27 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require("discord.js");
 
 module.exports = {
     name: "invite",
     
-    aliases: [ "addme", "links", "inv"],
-    description: "Shows my invite links!",
+    aliases: [ "addme", "Links", "inv"],
+    description: "Shows my invite Links!",
     args: false,
     usage: "",
     owner: false,
    run: async (client, message, args) => {
          
          
-    const row = new MessageActionRow()
+    const row = new ActionRowBuilder()
 			.addComponents(
                 
-            new MessageButton()
+            new ButtonBuilder()
     .setLabel("Radio Music")
-    .setStyle("LINK")
+    .setStyle("Link")
     .setURL(`https://discord.com/api/oauth2/authorize?client_id=902842676024606741&permissions=0&scope=bot%20applications.commands`) ,
        
-        new MessageButton()
+        new ButtonBuilder()
     .setLabel("World")
-    .setStyle("LINK")
+    .setStyle("Link")
     .setURL(`https://discord.com/api/oauth2/authorize?client_id=936647052815925349&permissions=8&scope=bot%20applications.commands`)
   );
 

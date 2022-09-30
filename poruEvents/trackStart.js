@@ -10,20 +10,20 @@ let tr = track.info.title;
 
     .setDescription(`[${result}](${track.info.uri}) <@${track.info.requester.id}>`)
 
-  const pause = new ButtonBuilder().setCustomId("pause").setLabel("").setEmoji("1023159510581379082").setStyle("SECONDARY");
+  const pause = new ButtonBuilder().setCustomId("pause").setEmoji("1023159510581379082").setStyle("Secondary");
 
-   const loop = new ButtonBuilder().setCustomId("loop").setLabel("").setEmoji("1021424527424626718").setStyle("SECONDARY");
+   const loop = new ButtonBuilder().setCustomId("loop").setEmoji("1021424527424626718").setStyle("Secondary");
     
-   const forward = new ButtonBuilder().setCustomId("forward").setLabel("").setEmoji("1021424525281337344").setStyle("SECONDARY");
+   const forward = new ButtonBuilder().setCustomId("forward").setEmoji("1021424525281337344").setStyle("Secondary");
 
-   const previous = new ButtonBuilder().setCustomId("previous").setLabel("").setEmoji("1023159828643840022").setStyle("SECONDARY");
+   const previous = new ButtonBuilder().setCustomId("previous").setEmoji("1023159828643840022").setStyle("Secondary");
 
-   const skip = new ButtonBuilder().setCustomId("skip").setLabel("").setEmoji("1023159160604463134").setStyle("SECONDARY");
+   const skip = new ButtonBuilder().setCustomId("skip").setEmoji("1023159160604463134").setStyle("Secondary");
 
-  const shuffle = new ButtonBuilder().setCustomId("shuffle").setLabel("").setEmoji("1021424524023050250").setStyle("SECONDARY");
+  const shuffle = new ButtonBuilder().setCustomId("shuffle").setEmoji("1021424524023050250").setStyle("Secondary");
 
-  const stop = new ButtonBuilder().setCustomId("stop").setLabel("").setEmoji("1021424526606737459").setStyle("SECONDARY");
-  const queue = new ButtonBuilder().setCustomId("queue").setLabel("").setEmoji("1023160060802768966").setStyle("SECONDARY");
+  const stop = new ButtonBuilder().setCustomId("stop").setEmoji("1021424526606737459").setStyle("Secondary");
+  const queue = new ButtonBuilder().setCustomId("queue").setEmoji("1023160060802768966").setStyle("Secondary");
  
    const row = new ActionRowBuilder().addComponents(previous,rewind,pause,forward,skip);
    const row1 = new ActionRowBuilder().addComponents(loop,shuffle,queue,stop);
