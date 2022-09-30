@@ -36,9 +36,9 @@ client.login(process.env.TOKEN).catch(e => console.log(e));
 
 client.config = require("./config.json");
 client.poru = new Poru(client, client.config.nodes,{
-  reconnectTime: 600,
+  reconnectTime: 30,
   resumeKey: "muzox",
-  resumeTimeout: 600000,
+  resumeTimeout: 60,
   defaultPlatform: "scsearch"
     
 });
@@ -83,12 +83,7 @@ client.on('interactionCreate', async interaction => {
 const web = new WebhookClient({ url: bot_error }); 
 
 process.on('unhandledRejection', (error) => {
-console.log(error);
-    const embed = new EmbedBuilder()
-    .setColor(client.config.embedColor)
-    .setAuthor(`UnhandledRejection Error`)
-    .setDescription(`Error Caught by ${client.user.username}\n\`\`\`js\n${error}\`\`\``)
-  web.send({embeds: [embed]})
+client.logger.error(error)
 });
 //now creating interaction event
 ["commands","events","PoruEvent"].forEach(handler => {

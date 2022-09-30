@@ -6,7 +6,8 @@ aliases: ['h'],
    usage: ['h','help'],
 description: "Gives My All command info",
   run: async (client, message, args) => {
-    let prefix = client.prefix
+    let prefix = await client.db.get(`prefix_${message.guild.id}`);
+    if (prefix === null) prefix = client.prefix;
 
 
     if (!args[0]) {

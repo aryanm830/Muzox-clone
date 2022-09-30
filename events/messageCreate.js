@@ -163,7 +163,7 @@ message.channel.send({embeds: [exist]})
   //owner
    if (command.owner) {
       if (client.owner) {
-        const devs = client.owner.find((x) => x === message.author.id);
+        const devs = client.config.owner.find((x) => x === message.author.id);
         if (!devs)
           return message.channel.send({
             embeds: [embed.setDescription('Only My Owners can use this command!')],
