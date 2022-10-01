@@ -29,7 +29,7 @@ if(interaction.isButton()) {
          {
            return interaction.message.delete();
          }
-         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
             
    const pause = new ButtonBuilder().setCustomId("pause").setEmoji(!player.isPaused ? "1023159510581379082" : "1021424523146444821").setStyle(!player.isPaused ? "Success" : "Secondary" );
@@ -64,7 +64,7 @@ if(interaction.isButton()) {
               
               interaction.reply({embeds: [music]});
          }
-         if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+         if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
           interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
         }else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
@@ -81,14 +81,14 @@ if(interaction.isButton()) {
          {
            interaction.reply({content: 'please play something'})
          }
-         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
            await player.stop();
                 music.setDescription(`Skipped to the next track.`)
               
               interaction.reply({embeds: [music], ephemeral: true});
          }
-         if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+         if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
           interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
         }else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
@@ -105,7 +105,7 @@ if(interaction.isButton()) {
          {
           interaction.message.delete();
          }
-         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
            if(!player.stoped)
                 {
@@ -122,7 +122,7 @@ if(interaction.isButton()) {
            return interaction.message.delete();
              }
          }
-         if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+         if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
           interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
         }else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
@@ -140,7 +140,7 @@ if(interaction.isButton()) {
         {
           return interaction.message.delete();
         }
-        if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+        if(interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
           if (player.loop === 'TRACK') {
             player.setLoop('TRACK');
@@ -157,7 +157,7 @@ if(interaction.isButton()) {
           }
          
       }  
-      if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+      if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
         interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
       }else{
        music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
@@ -175,7 +175,7 @@ if(interaction.isButton()) {
          {
            return interaction.message.delete();
          }
-         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+         if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
            if(!player.queue[3])
            {
@@ -190,7 +190,7 @@ if(interaction.isButton()) {
               interaction.reply({embeds: [music]});
            }
          }
-         if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+         if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
           interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
         }else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
@@ -207,12 +207,12 @@ if(interaction.isButton()) {
         {
           return interaction.message.delete();
         }
-        if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+        if(interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
           player.seekTo(player.position-10000);
     music.setDescription(`Rewinded To ${convertTime(player.position-10000)}`)
          }  
-         if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+         if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
            interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
          }else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
@@ -230,16 +230,17 @@ if(interaction.isButton()) {
         {
           return interaction.message.delete();
         }
-        if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
+        if(interaction.guild.members.me.voice.channelId === interaction.guild.members.me.voice.channelId)
          {
           player.seekTo(player.position+10000);
     music.setDescription(`Forwaded To ${convertTime(player.position+10000)}`)
          }  
-         if(interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+         if(interaction.guild.members.me.voice.channelId !== interaction.guild.members.me.voice.channelId) {
            interaction.reply({content: `You are not connected to ${interaction.guild.members.me.voice.channel} to use this buttons.`, ephemeral: true})
-         }else{
+         }
+         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button`)
-           interaction.reply({embeds:[music]})
+           interaction.reply({embeds:[music],ephemeral:true})
          }
         
        }
