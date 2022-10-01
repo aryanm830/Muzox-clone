@@ -2,15 +2,17 @@ const discord = require("discord.js")
  const { ButtonBuilder, ActionRowBuilder } = require("discord.js")
 const ms = require("ms")
 module.exports.run = async (client,player,track) => {
+  
 let tr = track.info.title;
   let result = tr;
-  const embed = new discord.MessageEmbed()
-    .setAuthor({name:`Now Playing`,iconURL:client.user.displayAvatarURL})
+  const embed = new discord.EmbedBuilder()
+    .setAuthor({name:`Now Playing`,iconURL:client.user.displayAvatarURL()})
 .setColor(client.config.embedColor) 
 
     .setDescription(`[${result}](${track.info.uri}) <@${track.info.requester.id}>`)
 
   const pause = new ButtonBuilder().setCustomId("pause").setEmoji("1023159510581379082").setStyle("Secondary");
+  const rewind = new ButtonBuilder().setCustomId("rewind").setEmoji("1023159244943536218").setStyle("Secondary");
 
    const loop = new ButtonBuilder().setCustomId("loop").setEmoji("1021424527424626718").setStyle("Secondary");
     
@@ -28,6 +30,6 @@ let tr = track.info.title;
    const row = new ActionRowBuilder().addComponents(previous,rewind,pause,forward,skip);
    const row1 = new ActionRowBuilder().addComponents(loop,shuffle,queue,stop);
    const channel = client.channels.cache.get(player.textChannel)
-return channel?.send({ embeds: [embed], components: [row] [row1] }).then(x => player.message = x)
+return channel?.send({ embeds: [embed], components: [row, row1] }).then(x => player.message = x)
 
 }

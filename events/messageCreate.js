@@ -75,7 +75,10 @@ const ch = message.guild.channels.cache.get(p1.voiceChannel);
         
  if (!message.member) message.guild.fetchMembers(message);
   
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+ const args = message.content
+ .slice(prefix.length)
+ .trim()
+ .split(/ +/g);
 
 
 
@@ -142,24 +145,9 @@ message.channel.send({embeds: [exist]})
     .setDescription(`<:error:938293159153238076> You didn't provide any arguments!`)
     return message.channel.send({embeds: [provide]})
   }
-  //premium
-  let user1 = client.userSettings.get(message.author.id);
-    // If there is no user, create it in the Database as "newUser"
-    if (!user1) {
-      const findUser = await User.findOne({ Id: message.author.id });
-      if (!findUser) {
-        const newUser = await User.create({ Id: message.author.id });
-        client.userSettings.set(message.author.id, newUser);
-        user1 = newUser;
-      } else return;
-    }
-    if (command.premium && user1 && !user1.isPremium) {
-      const embed = new EmbedBuilder()
-      .setDescription("You must [vote](https://top.gg/) me to use this command. If you want to disable this then [click here](https://discord.gg/wrCzESkVzK) to buy [premium](https://discord.gg/wrCzESkVzK) to listen interruption free **music**!")
-      .setColor(client.config.embedColor)
-    return message.channel.send({embeds: [embed], components: [premrow]})
-      
-    }
+  //nothinf
+  
+    
   //owner
    if (command.owner) {
       if (client.owner) {

@@ -4,6 +4,8 @@ const { Webhooks: {bot_error} } = require('./config.json')
 const { Poru ,options} = require("poru");
 const osUtils = require("os-utils"); 
 const Client = discord.Client;
+const chalk = require("chalk");
+const moment = require("moment");
 const ms = require("ms");
 const mongoose = require("mongoose");
 require("dotenv").config()
@@ -80,10 +82,12 @@ client.on('interactionCreate', async interaction => {
   
   }
   });
+  const date = `${moment().format("DD-MM-YYYY hh:mm:ss")}`;
 const web = new WebhookClient({ url: bot_error }); 
 
 process.on('unhandledRejection', (error) => {
-client.logger.error(error)
+  console.log(error)
+//console.log(`[${chalk.gray(date)}]: [${chalk.black.bgRed('ERROR')}] ${error}`)
 });
 //now creating interaction event
 ["commands","events","PoruEvent"].forEach(handler => {

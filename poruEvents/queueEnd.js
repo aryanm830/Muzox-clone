@@ -7,7 +7,7 @@ module.exports.run = async (client, player, message) => {
     if(player._247) return;
   const end = new EmbedBuilder()
     .setColor(client.config.embedColor)
-        .setAuthor({name:`Queue Ended`,iconURL:client.user.displayAvatarURL})
+        .setAuthor({name:`Queue Ended`,iconURL:client.user.displayAvatarURL()})
         .setDescription(`Queue More Songs To Keep The Party Going`)
         
   

@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageActionRow, MessageButton, MessageAttachment } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, AttachmentBuilder } = require("discord.js");
 
 const { post } = require("node-superfetch");
 
@@ -8,16 +8,16 @@ module.exports = {
   aliases:['ev'],
   owner:true,
   run: async (client, message, args) => {
- const row = new MessageActionRow()
-           .addComponents(new MessageButton()
+ const row = new ActionRowBuilder()
+           .addComponents(new ButtonBuilder()
     .setEmoji("993492852023762965")
     .setCustomId('DELETE_BUT')
     .setStyle("DANGER"));
 
      const player = client.poru.players.get(message.guild.id)
 
-      const em1 = new MessageEmbed();
-      const nembed = new MessageEmbed()
+      const em1 = new EmbedBuilder();
+      const nembed = new EmbedBuilder()
       .setColor(`${client.config.embedColor}`)
       .setTitle("EVAL")
       .setDescription("<:error:984369648818602005> You are not allowed to run this command! Only the Owners are allowed to run this command!")            
@@ -48,7 +48,7 @@ module.exports = {
             if (output.length > 1024) {
                
                             const str = output;
-            const file = new MessageAttachment(Buffer.from(str, "utf-8"), 'World.js')
+            const file = new AttachmentBuilder(Buffer.from(str, "utf-8"), 'World.js')
             return await message.channel.send({files: [file], components: [row]}) 
               
             } else {
@@ -62,7 +62,7 @@ module.exports = {
             if (err.length > 1024) {
                
                          const str = err;
-            const file = new MessageAttachment(Buffer.from(str, "utf-8"), 'world_error.js')
+            const file = new AttachmentBuilder(Buffer.from(str, "utf-8"), 'world_error.js')
             return await message.channel.send({files: [file], components: [row]})
             } else {
                 a += "```js\n" + err + "```";

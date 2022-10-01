@@ -13,9 +13,9 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(client.config.embedColor)
             .setTitle('Now Playing')
-            .setThumbnail(`https://img.youtube.com/vi/${player.currentTrack.info.identifier}/default.jpg`)
+            .setThumbnail(player.currentTrack.info.image)
             .setDescription(`[${player.currentTrack.info.title}](${player.currentTrack.info.uri}) [${ms(player.currentTrack.info.length)}]`)
-            .setFooter(`queue length: ${player.queue.length} `);
+            .setFooter({text:`queue length: ${player.queue.length} `});
         if (queue.length)   embed.addFields([
           {
             name: 'Up Next',

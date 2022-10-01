@@ -2,7 +2,7 @@
   "prefix":">>",
   "db": "",
   "logs":"920657546988093501",
-    "embedColor": "#ff0000",
+    "embedColor": "#ffcb00",
     "links":{
 "bg": "https://media.discordapp.net/attachments/984799594787524668/990842585239130182/20220627_100911.jpg"
     },
@@ -18,15 +18,9 @@
     "player_delete": "https://discord.com/api/webhooks/1015277965321457694/7F7RvDL6yjvlb_xZP_PUhJmWg6iQNjR9F7ECLZkti1MKRz2wdRx5t8HpTgQCd2N2Tlrf"
   },
   "nodes":[
-    {
-      "name": "NODE-1",
-      "host": "lavalink.oops.wtf",
-      "port": 443,
-      "password": "www.freelavalink.ga",
-      "secure": true
-  },
+    
   {
-      "name": "NODE-2",
+      "name": "Muzox Lavalink",
       "host": "node1.kartadharta.xyz",
       "port": 443,
       "password": "kdlavalink",

@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js")
 module.exports = {
   name: "play",
 
-    aliases: ["d"],
+    aliases: ["p"],
     description: "Plays a song with the given name or url.",
     usage: "<url | Song Name>",
   inVc: true,
@@ -22,7 +22,7 @@ module.exports = {
     })
 
     // Getting tracks
-    const resolve = await client.poru.resolve(args.join(' '))
+    const resolve = await client.poru.resolve(args.join(' '));
     const { loadType, tracks, playlistInfo } = resolve;
 
     // Adding in queue
@@ -49,7 +49,7 @@ new EmbedBuilder()
     }else if(loadType ==="SEARCH_RESULT"|| loadType ==="TRACK_LOADED"){
       
       const track = tracks.shift();
-    track.info.requester = message.author;
+    track.info.requester = message.author.tag;
 
      player.queue.add(track);
         
@@ -57,15 +57,15 @@ new EmbedBuilder()
       if(player.queue.length > 0){
      return message.channel.send({ embeds: [
 new EmbedBuilder()
-.setAuthor('Added Song To Queue', message.author.displayAvatarURL({dynamic: true}))
-             .setColor("#63e963")
+.setAuthor({name:'Added Song To Queue', iconURL:message.author.displayAvatarURL({dynamic: true})})
+             .setColor(client.config.embedColor)
              .setDescription(`<a:emoji_46:938388856095514654> [${tracks[0].info.title}](${tracks[0].info.uri})\n\n**Requester: **<@${message.author.id}>`)   
 ]
                            });
         }
     }else{
       const not = new EmbedBuilder() 
-.setColor(`#ff0000`)
+.setColor(client.config.embedColor)
 .setDescription(`There were no results found try to be more specific as possible once check song title.`) 
 
       

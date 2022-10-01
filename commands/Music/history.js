@@ -26,7 +26,7 @@ module.exports = {
            
              {
                  
-                const queuedSongs = player.get("previousTracks").map(() => `\`${++i}\` • ${t.info.title} • \`[${convertTime(t.info.duration)}]\` • [${t.info.requester}]`);
+                const queuedSongs = player.get("previoustrack").map(() => `\`${++i}\` • ${t.info.title} • \`[${convertTime(t.info.duration)}]\` • [${t.info.requester}]`);
 
                 const mapping = load.chunk(queuedSongs, 10);
                 const pages = mapping.map((s) => s.join("\n"));
