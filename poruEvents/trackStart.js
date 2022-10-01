@@ -9,7 +9,7 @@ let tr = track.info.title;
     .setAuthor({name:`Now Playing`,iconURL:client.user.displayAvatarURL()})
 .setColor(client.config.embedColor) 
 
-    .setDescription(`[${result}](${track.info.uri}) <@${track.info.requester.id}>`)
+    .setDescription(`[${result}](${track.info.uri}) ${track.info.requester}`)
 
   const pause = new ButtonBuilder().setCustomId("pause").setEmoji("1023159510581379082").setStyle("Secondary");
   const rewind = new ButtonBuilder().setCustomId("rewind").setEmoji("1023159244943536218").setStyle("Secondary");

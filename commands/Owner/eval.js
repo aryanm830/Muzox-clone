@@ -12,7 +12,7 @@ module.exports = {
            .addComponents(new ButtonBuilder()
     .setEmoji("993492852023762965")
     .setCustomId('DELETE_BUT')
-    .setStyle("DANGER"));
+    .setStyle("Danger"));
 
      const player = client.poru.players.get(message.guild.id)
 
@@ -21,7 +21,7 @@ module.exports = {
       .setColor(`${client.config.embedColor}`)
       .setTitle("EVAL")
       .setDescription("<:error:984369648818602005> You are not allowed to run this command! Only the Owners are allowed to run this command!")            
-      .setFooter(message.author.tag)
+      .setFooter({text:message.author.tag})
   
   if (!client.config.owner.includes(message.author.id)) return message.channel.send({
       embeds: [nembed]
@@ -48,7 +48,7 @@ module.exports = {
             if (output.length > 1024) {
                
                             const str = output;
-            const file = new AttachmentBuilder(Buffer.from(str, "utf-8"), 'World.js')
+            const file = new AttachmentBuilder(Buffer.from(str, "utf-8"), 'muzox.js')
             return await message.channel.send({files: [file], components: [row]}) 
               
             } else {
@@ -62,7 +62,7 @@ module.exports = {
             if (err.length > 1024) {
                
                          const str = err;
-            const file = new AttachmentBuilder(Buffer.from(str, "utf-8"), 'world_error.js')
+            const file = new AttachmentBuilder(Buffer.from(str, "utf-8"), 'muzox_error.js')
             return await message.channel.send({files: [file], components: [row]})
             } else {
                 a += "```js\n" + err + "```";

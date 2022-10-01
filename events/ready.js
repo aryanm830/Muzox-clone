@@ -19,9 +19,9 @@ await client.db.connect();
  
     setInterval(() => {
       const statuses = [
-        `Poru Music`,
+        `Poru Music`,'Muzox Cloning...'
       ];
-      const status = statuses[0];
+      const status = statuses[Math.floor(Math.random() * statuses.length)];
       client.user.setActivity(status, { type: "LISTENING" });
     }, 60000);
     
