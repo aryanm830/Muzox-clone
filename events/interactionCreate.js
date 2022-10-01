@@ -146,11 +146,11 @@ if(interaction.isButton()) {
             player.setLoop('TRACK');
             music.setDescription(`**Now looping the current track...**`)
           interaction.reply({embeds: [music]});
-          } else if (player.loop === QUEUE) {
+          } else if (player.loop === 'QUEUE') {
             player.setLoop('QUEUE');
             music.setDescription(`**Now looping the queue...**`)
                 interaction.reply({embeds: [music]});
-          } else if (player.loop === NONE) {
+          } else if (player.loop === 'NONE') {
             player.setLoop('NONE');
             music.setDescription(`**Looping is now disabled**`)
             interaction.reply({embeds: [music]});
