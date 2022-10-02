@@ -1,5 +1,5 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js');
-const { convertTime }= require('../util/convert');
+const { convertTime }= require('/app/util/convert');
 const User = require("../Models/User");
 module.exports.run = async (client, interaction, args) => {
   const music = new EmbedBuilder();
