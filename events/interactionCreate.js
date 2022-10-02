@@ -88,7 +88,7 @@ if(interaction.isButton()) {
          }
          else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
-          interaction.reply({embeds:[music]})
+          interaction.reply({embeds:[music],ephemeral:true})
         }
        }// "skip work above"  
        if(interaction.customId === 'stop')
@@ -120,7 +120,7 @@ if(interaction.isButton()) {
          }
          else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
-          interaction.reply({embeds:[music]})
+          interaction.reply({embeds:[music],ephemeral:true})
         }
        }// "stop" work above    player.trackRepeat && !player.queueRepeat
          
@@ -153,7 +153,7 @@ if(interaction.isButton()) {
       }  
       else{
        music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
-        interaction.reply({embeds:[music]})
+        interaction.reply({embeds:[music],ephemeral:true})
       }
        }
          
@@ -184,7 +184,7 @@ if(interaction.isButton()) {
          }
          else{
          music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
-          interaction.reply({embeds:[music]})
+          interaction.reply({embeds:[music],ephemeral:true})
         }
        }
        if(interaction.customId === 'rewind')
@@ -204,7 +204,7 @@ if(interaction.isButton()) {
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
-           interaction.reply({embeds:[music]})
+           interaction.reply({embeds:[music],ephemeral:true})
          }
         
        }
@@ -225,7 +225,7 @@ if(interaction.isButton()) {
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
-           interaction.reply({embeds:[music]})
+           interaction.reply({embeds:[music],ephemeral:true})
          }
         
        }
