@@ -199,9 +199,9 @@ if(interaction.isButton()) {
         }
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
-const rewind=convertTime(player.position-10000);
+const rewind=player.position-10000;
           player.seekTo(player.position-10000);
-    music.setDescription(`Rewinded To ${rewind}`)
+    music.setDescription(`Rewinded To ${convertTime(rewind)}`)
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
@@ -221,9 +221,9 @@ const rewind=convertTime(player.position-10000);
         }
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
-const forward = convertTime(player.position+10000);
+const forward = player.position+10000;
           player.seekTo(player.position+10000);
-    music.setDescription(`Forwaded To ${forward}`)
+    music.setDescription(`Forwaded To ${converTime(forward)}`)
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
