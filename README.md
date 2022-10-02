@@ -34,4 +34,4 @@ A Clone Version Of Muzox Bot based on [Poru](https://npmjs.com/poru) lavalink cl
 
 If you need help then feel free to join our [Support server](https://discord.gg/b3k6XNA5pw).
 
-- [ Note ] Support us by starring this repository, following [Paras](https://github.com/parasop) and by Donating [here](https://ko-fi.com/parasdev).
+- [ Note ] Support us by starring this repository, following [Paras](https://github.com/parasop)[& Aryan](https://github.com/ARYANOP-Radio) and by Donating [here](https://ko-fi.com/parasdev).
