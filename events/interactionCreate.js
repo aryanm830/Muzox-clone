@@ -1,5 +1,5 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js');
-const { convertTime }= require('../util/convert');
+const { convertTime }= require('/app/util/convert');
 const User = require("../Models/User");
 module.exports.run = async (client, interaction, args) => {
   const music = new EmbedBuilder();
@@ -221,6 +221,7 @@ if(interaction.isButton()) {
         }
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
+const forward = player.position+10000;
           player.seekTo(player.position+10000);
     music.setDescription(`Forwaded To ${convertTime(player.position+10000)}`)
     interaction.reply({embeds:[music]})
