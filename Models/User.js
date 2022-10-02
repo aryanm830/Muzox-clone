@@ -10,35 +10,7 @@ const User = mongoose.Schema({
         suppoter: { type: Boolean, default: false },
         bug: { type: Boolean, default: false },
         premium: { type: Boolean, default: false },
-    },
-    Id: {
-        type: String
-      },
-      isPremium: {
-        type: Boolean,
-        default: false,
-      },
-      premium: {
-        redeemedBy: {
-          type: Array,
-          default: null,
-        },
-    
-        redeemedAt: {
-          type: Number,
-          default: null,
-        },
-    
-        expiresAt: {
-          type: Number,
-          default: null,
-        },
-    
-        plan: {
-          type: String,
-          default: null,
-        },
-    },
+    }
 
 })
 

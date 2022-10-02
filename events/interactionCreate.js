@@ -73,11 +73,11 @@ if(interaction.isButton()) {
        {
          if(!player)
          {
-          interaction.reply({content: '<:error:984369648818602005> Please Play Something'})
+          interaction.reply({content: '<:error:984369648818602005> 🚫 Error Contact Support Server'})
          }/* end of not player */
          if(!player.message || interaction.message.id != player.message?.id)
          {
-           interaction.reply({content: 'please play something'})
+           interaction.reply({content: '🚫 Error Contact Support Server'})
          }
          if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
@@ -95,7 +95,7 @@ if(interaction.isButton()) {
        {
          if(!player)
          {
-          interaction.reply({content: 'please play something'})
+          interaction.reply({content: '🚫 Error Contact Support Server'})
          }/* end of not player */
          if(!player.message || interaction.message.id != player.message?.id)
          {
@@ -161,7 +161,7 @@ if(interaction.isButton()) {
        {
          if(!player)
          {
-          interaction.reply({content: 'please play something'})
+          interaction.reply({content: '🚫 Error Contact Support Server'})
          }/* end of not player */
          if(!player.message || interaction.message.id != player.message?.id)
          {
@@ -171,14 +171,14 @@ if(interaction.isButton()) {
          {
            if(!player.queue[3])
            {
-             music.setDescription(`Queue length must be greater than 3`)
+             music.setDescription(`🚫 **Need More Than 3 Songs in The Queue To Shuffle**`)
              return interaction.reply({embeds: [music]});
            }
            else 
            {
               
               player.queue.shuffle();
-              music.setDescription(`Shuffled the queue`)
+              music.setDescription(`🔀 **Shuffled The Queue**`)
               interaction.reply({embeds: [music]});
            }
          }
@@ -200,7 +200,8 @@ if(interaction.isButton()) {
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
           player.seekTo(player.position-10000);
-    music.setDescription(`Rewinded To ${(convertTime(player.position-10000))}`)
+    music.setDescription(`Rewinded To ${convertTime(player.position-10000)}`)
+    interaction.reply({embeds:[music]})
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
@@ -221,7 +222,8 @@ if(interaction.isButton()) {
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
           player.seekTo(player.position+10000);
-    music.setDescription(`Forwaded To ${(convertTime(player.position+10000))}`)
+    music.setDescription(`Forwaded To ${convertTime(player.position+10000)}`)
+    interaction.reply({embeds:[music]})
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)

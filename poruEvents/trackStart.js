@@ -1,4 +1,5 @@
-const discord = require("discord.js")
+const discord = require("discord.js");
+const { convertTime }=require('../util/convert');
  const { ButtonBuilder, ActionRowBuilder } = require("discord.js")
 const ms = require("ms")
 module.exports.run = async (client,player,track) => {
@@ -9,7 +10,7 @@ let tr = track.info.title;
     .setAuthor({name:`Now Playing`,iconURL:client.user.displayAvatarURL()})
 .setColor(client.config.embedColor) 
 
-    .setDescription(`[${result}](${track.info.uri}) ${track.info.requester}`)
+    .setDescription(`[${result}](${track.info.uri}) by ${track.info.author}・ ${track.info.requester} ${convertTime(track.info.duration)}`)
 
   const pause = new ButtonBuilder().setCustomId("pause").setEmoji("1023159510581379082").setStyle("Secondary");
   const rewind = new ButtonBuilder().setCustomId("rewind").setEmoji("1023159244943536218").setStyle("Secondary");
