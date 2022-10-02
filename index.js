@@ -46,12 +46,12 @@ client.poru = new Poru(client, client.config.nodes,{
 });
 client.commands = new discord.Collection();
 client.config = require('./config.json');
-client.emoji = require('./utils/emoji.json');
+client.emoji = require('./util/emoji.json');
 client.prefix = client.config.prefix;
 client.aliases = new discord.Collection();
 client.slash = new discord.Collection();
 client.userSettings = new discord.Collection();
-client.logger = require('./utils/logger.js') 
+client.logger = require('./util/logger.js') 
 client.db = new Database("mongodb+srv://Disc:World@cluster0.gvess.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 const dbOptions ={
   useNewUrlParser:true,

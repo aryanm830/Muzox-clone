@@ -1,6 +1,6 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require("discord.js");
 const db = require("../../schema/playlist");
-const { convertTime } = require("../../utils/convert.js");
+const { convertTime } = require("../../util/convert.js");
 const lodash = require("lodash");
 
 module.exports = {

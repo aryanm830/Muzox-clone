@@ -1,7 +1,7 @@
 
 const { Client, Message, MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
 const load = require('lodash');
-const { convertTime } = require('../../utils/convert.js');
+const { convertTime } = require('../../util/convert.js');
 
 module.exports = {
     name: "history",

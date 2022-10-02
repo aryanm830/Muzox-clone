@@ -1,5 +1,5 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js');
-const {convertTime}= require('../utils/convert.js');
+const { convertTime }= require('../util/convert');
 const User = require("../Models/User");
 module.exports.run = async (client, interaction, args) => {
   const music = new EmbedBuilder();
@@ -32,16 +32,16 @@ if(interaction.isButton()) {
          if(interaction.guild.members.me.voice.channel && interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
             
-   const pause = new ButtonBuilder().setCustomId("pause").setEmoji(!player.isPaused ? "1023159510581379082" : "1021424523146444821").setStyle(!player.isPaused ? "Success" : "Secondary" );
+   const pause = new ButtonBuilder().setCustomId("pause").setEmoji(!player.isPaused ?  "1021424523146444821" : "1023159510581379082").setStyle(!player.isPaused ? "Success" : "Secondary" );
    const rewind = new ButtonBuilder().setCustomId("rewind").setEmoji("1023159244943536218").setStyle("Secondary");
 
    const loop = new ButtonBuilder().setCustomId("loop").setEmoji("1021424527424626718").setStyle("Secondary");
     
-   const forward = new ButtonBuilder().setCustomId("forward").setEmoji("1021424525281337344").setStyle("Secondary");
+   const forward = new ButtonBuilder().setCustomId("forward").setEmoji("1023159160604463134").setStyle("Secondary");
 
    const previous = new ButtonBuilder().setCustomId("previous").setEmoji("1023159828643840022").setStyle("Secondary");
 
-   const skip = new ButtonBuilder().setCustomId("skip").setEmoji("1023159160604463134").setStyle("Secondary");
+   const skip = new ButtonBuilder().setCustomId("skip").setEmoji("1021424525281337344").setStyle("Secondary");
 
   const shuffle = new ButtonBuilder().setCustomId("shuffle").setEmoji("1021424524023050250").setStyle("Secondary");
 
@@ -200,7 +200,7 @@ if(interaction.isButton()) {
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
           player.seekTo(player.position-10000);
-    music.setDescription(`Rewinded To ${convertTime(player.position-10000)}`)
+    music.setDescription(`Rewinded To ${(convertTime(player.position-10000))}`)
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
@@ -221,7 +221,7 @@ if(interaction.isButton()) {
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
           player.seekTo(player.position+10000);
-    music.setDescription(`Forwaded To ${convertTime(player.position+10000)}`)
+    music.setDescription(`Forwaded To ${(convertTime(player.position+10000))}`)
          }  
         else{
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
