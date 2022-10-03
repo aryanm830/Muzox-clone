@@ -9,13 +9,11 @@
  
   "owner": ["884067115110395925" , "889005501701029919", "857169227172282378","954367061222633472","920954764160794625","687993171749503062"],
   "Webhooks": {
-    "bot_error": "https://discord.com/api/webhooks/1015278474778382427/PUk9YtPIhjh2rCsdy94WufVZ3rhNejBi_j30ipMKpfOq7AYwhBNvydxmocYi68WGGdzE",
-    "db_error": "https://discord.com/api/webhooks/1015278474778382427/PUk9YtPIhjh2rCsdy94WufVZ3rhNejBi_j30ipMKpfOq7AYwhBNvydxmocYi68WGGdzE",
-    "webhook_error": "https://discord.com/api/webhooks/1015278474778382427/PUk9YtPIhjh2rCsdy94WufVZ3rhNejBi_j30ipMKpfOq7AYwhBNvydxmocYi68WGGdzE",
-    "server_add": "https://discord.com/api/webhooks/1015277965321457694/7F7RvDL6yjvlb_xZP_PUhJmWg6iQNjR9F7ECLZkti1MKRz2wdRx5t8HpTgQCd2N2Tlrf",
-    "server_remove": "https://discord.com/api/webhooks/1015277965321457694/7F7RvDL6yjvlb_xZP_PUhJmWg6iQNjR9F7ECLZkti1MKRz2wdRx5t8HpTgQCd2N2Tlrf",
-    "player_create": "https://discord.com/api/webhooks/1015277965321457694/7F7RvDL6yjvlb_xZP_PUhJmWg6iQNjR9F7ECLZkti1MKRz2wdRx5t8HpTgQCd2N2Tlrf",
-    "player_delete": "https://discord.com/api/webhooks/1015277965321457694/7F7RvDL6yjvlb_xZP_PUhJmWg6iQNjR9F7ECLZkti1MKRz2wdRx5t8HpTgQCd2N2Tlrf"
+    "bot_error": "",
+    "db_error": "",
+    "webhook_error": "",
+    "server_add": "",
+    "server_remove": ""
   },
   "nodes":[
     
