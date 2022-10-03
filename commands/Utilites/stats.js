@@ -1,4 +1,4 @@
-const { MessageEmbed, Message } = require('discord.js')
+const { EmbedBuilder, Message } = require('discord.js')
 const { mem, cpu} = require('node-os-utils');
 const packageJSON = require("../../package.json");
 const User = require("../../Models/User");
@@ -41,10 +41,10 @@ const currentCPUUsage = (usage.user + usage.system) * 1000;
       const duration1 = Math.round((Date.now() - message.client.uptime)/1000);
         
         const memusage = process.memoryUsage();
-  const embed = new MessageEmbed()
+  const embed = new EmbedBuilder()
         
         .setColor(`${client.config.embedColor}`)
-        .setAuthor({ name: "Bot Information", iconURL: client.user.displayAvatarURL, url: "https://discord.gg/bothub"})
+        .setAuthor({ name: "Bot Information", iconURL: client.user.displayAvatarURL(), url: "https://discord.gg/bothub"})
         .setDescription(`What's up ${message.author.username}! I am ${client.user.username}, a cool discord music bot for your server!`)
         .addField(`<:stats:985100769520930816> Stats`,
         `➜ **${client.guilds.cache.size}** Servers\n➜ **${users}** Users\n➜ **${client.channels.cache.size}** Channels\n`)
