@@ -10,7 +10,7 @@ module.exports = {
 
     // Spawning lavalink player
     const player = await client.poru.createConnection({
-      guild: message.guild.id,
+      guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
       textChannel: message.channel,
       selfDeaf: true,
