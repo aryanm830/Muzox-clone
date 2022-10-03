@@ -18,7 +18,7 @@ module.exports = {
     })
 
     // Getting tracks
-    const resolve = await client.poru.spotify.fetch(args.join(' '))
+    const resolve = await client.poru.resolve(args.join(' '),"spotify")
     const { loadType, tracks, playlistInfo } = resolve;
 
     // Adding in queue
