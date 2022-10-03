@@ -1,5 +1,5 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js');
-const { convertTime }= require('/app/util/convert');
+const { convertTime }= require('../util/convert');
 const User = require("../Models/User");
 module.exports.run = async (client, interaction, args) => {
   const music = new EmbedBuilder();
@@ -230,7 +230,12 @@ const forward = player.position+10000;
           music.setDescription(`🚫 You Must Be in Voice Channel To Use This Button・${interaction.guild.members.me.voice.channel}`)
            interaction.reply({embeds:[music],ephemeral:true})
          }
-        
+        if(interaction.customId === 'queue')
+          {
+            music.setDescription(`🚫 This Will Be available Soon`)
+            interaction.reply({embeds:[music]})
+            }
+         
        }
 
     }
