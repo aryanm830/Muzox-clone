@@ -15,15 +15,10 @@ module.exports = {
 			.addComponents(
                 
             new ButtonBuilder()
-    .setLabel("Radio Music")
+    .setLabel(`${client.user.username}`)
     .setStyle("Link")
-    .setURL(`https://discord.com/api/oauth2/authorize?client_id=902842676024606741&permissions=0&scope=bot%20applications.commands`) ,
-       
-        new ButtonBuilder()
-    .setLabel("World")
-    .setStyle("Link")
-    .setURL(`https://discord.com/api/oauth2/authorize?client_id=936647052815925349&permissions=8&scope=bot%20applications.commands`)
-  );
+    .setURL(`https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands`)
+   );
 
           
            message.channel.send({components: [row]})
