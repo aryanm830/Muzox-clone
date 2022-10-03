@@ -18,7 +18,7 @@ module.exports = {
     })
 
     // Getting tracks
-    const resolve = await client.poru.apple.fetch(args.join(' '))
+    const resolve = await client.poru.resolve(args.join(' '),"applemusic")
     const { loadType, tracks, playlistInfo } = resolve;
 
     // Adding in queue
