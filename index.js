@@ -6,6 +6,7 @@ const osUtils = require("os-utils");
 const Client = discord.Client;
 const chalk = require("chalk");
 const moment = require("moment");
+const botconfig = require('./comfig.json');
 const ms = require("ms");
 const mongoose = require("mongoose");
 require("dotenv").config()
@@ -52,14 +53,14 @@ client.aliases = new discord.Collection();
 client.slash = new discord.Collection();
 client.userSettings = new discord.Collection();
 client.logger = require('./util/logger.js') 
-client.db = new Database("mongodb+srv://Disc:World@cluster0.gvess.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+client.db = new Database(botconfig.db);
 const dbOptions ={
   useNewUrlParser:true,
   autoIndex:false,
   useUnifiedTopology:true
 }
 
-mongoose.connect("mongodb+srv://Disc:World@cluster0.gvess.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",dbOptions)
+mongoose.connect(botconfig.db,dbOptions)
 mongoose.connection.on("connected",()=>{
  client.logger.log("mongoose connected")
 
