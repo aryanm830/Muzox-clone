@@ -136,15 +136,15 @@ if(interaction.isButton()) {
         }
         if(interaction.guild.members.me.voice.channelId === interaction.member.voice.channelId)
          {
-          if (player.loop === 'TRACK') {
+          if (player.loop === 'NONE') {
             player.setLoop('TRACK');
             music.setDescription(`**Now looping the current track...**`)
           interaction.reply({embeds: [music]});
-          } else if (player.loop === 'QUEUE') {
+          } else if (player.loop === 'TRACK') {
             player.setLoop('QUEUE');
             music.setDescription(`**Now looping the queue...**`)
                 interaction.reply({embeds: [music]});
-          } else if (player.loop === 'NONE') {
+          } else if (player.loop === 'QUEUE') {
             player.setLoop('NONE');
             music.setDescription(`**Looping is now disabled**`)
             interaction.reply({embeds: [music]});
