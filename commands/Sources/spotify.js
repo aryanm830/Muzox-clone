@@ -12,7 +12,7 @@ module.exports = {
     const player = await client.poru.createConnection({
       guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
+      textChannel: message.channel.id,
       selfDeaf: true,
       selfMute: false,
     })
