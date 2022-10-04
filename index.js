@@ -6,7 +6,7 @@ const osUtils = require("os-utils");
 const Client = discord.Client;
 const chalk = require("chalk");
 const moment = require("moment");
-const botconfig = require('./comfig.json');
+const botconfig = require('./config.json');
 const ms = require("ms");
 const mongoose = require("mongoose");
 require("dotenv").config()
