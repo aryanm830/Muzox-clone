@@ -4,7 +4,8 @@
   "description": "a clone version of muzox in poru",
   "main": "index.js",
   "scripts": {
-    "test": "node ."
+    "test": "node .",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,6 @@
   "homepage": "https://github.com/ARYANOP-Radio/Muzox-clone#readme",
   "dependencies": {
     "ascii-table": "0.0.9",
-    "canvafy": "^2.0.2",
     "chalk": "^4.1.2",
     "chartjs-node-canvas": "^4.1.6",
     "chartjs-plugin-gradient": "^0.5.0",
