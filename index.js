@@ -3,6 +3,7 @@ const { EmbedBuilder, WebhookClient,  GatewayIntentBits } = require('discord.js'
 const { Webhooks: {bot_error} } = require('./config.json')
 const { Poru ,options} = require("poru");
 const osUtils = require("os-utils"); 
+const Topgg =require('@top-gg/sdk')
 const Client = discord.Client;
 const chalk = require("chalk");
 const moment = require("moment");
@@ -49,8 +50,10 @@ client.commands = new discord.Collection();
 client.config = require('./config.json');
 client.emoji = require('./util/emoji.json');
 client.prefix = client.config.prefix;
+client.topgg = new Topgg.Api(client.config.topgg)
 client.aliases = new discord.Collection();
 client.slash = new discord.Collection();
+
 client.userSettings = new discord.Collection();
 client.logger = require('./util/logger.js') 
 client.db = new Database(botconfig.db);
@@ -84,7 +87,7 @@ client.on('interactionCreate', async interaction => {
   }
   });
   const date = `${moment().format("DD-MM-YYYY hh:mm:ss")}`;
-const web = new WebhookClient({ url: bot_error }); 
+  const web = new WebhookClient({ url: bot_error }); 
 
 process.on('unhandledRejection', (error) => {
   console.log(error)
