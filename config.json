@@ -1,6 +1,6 @@
 {
   "prefix":">>",
-  "db": "",
+  "db": "mongodb+srv://crex:crex@cluster0.u6zgok2.mongodb.net/crex",
   "logs":"920657546988093501",
   "topgg": "",
     "embedColor": "#ffcb00",
@@ -10,11 +10,11 @@
  
   "owner": ["709169539249864775","884067115110395925" , "889005501701029919", "857169227172282378","954367061222633472","920954764160794625","687993171749503062"],
   "Webhooks": {
-    "bot_error": "",
-    "db_error": "",
-    "webhook_error": "",
-    "server_add": "",
-    "server_remove": ""
+    "bot_error": "https://discord.com/api/webhooks/1057528925858844752/lJNa1cStiAgPCugPcYD4naL6UVWUv3uJ3V_QOtXsPg9J_DhtsrHznzxCAEgSwMJLEG16",
+    "db_error": "https://discord.com/api/webhooks/1057528925858844752/lJNa1cStiAgPCugPcYD4naL6UVWUv3uJ3V_QOtXsPg9J_DhtsrHznzxCAEgSwMJLEG16",
+    "webhook_error": "https://discord.com/api/webhooks/1057528925858844752/lJNa1cStiAgPCugPcYD4naL6UVWUv3uJ3V_QOtXsPg9J_DhtsrHznzxCAEgSwMJLEG16",
+    "server_add": "https://discord.com/api/webhooks/1057528925858844752/lJNa1cStiAgPCugPcYD4naL6UVWUv3uJ3V_QOtXsPg9J_DhtsrHznzxCAEgSwMJLEG16",
+    "server_remove": "https://discord.com/api/webhooks/1057528925858844752/lJNa1cStiAgPCugPcYD4naL6UVWUv3uJ3V_QOtXsPg9J_DhtsrHznzxCAEgSwMJLEG16"
   },
   "nodes":[
     
