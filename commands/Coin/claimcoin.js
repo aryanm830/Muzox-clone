@@ -35,6 +35,7 @@ await client.db.set(`date_${message.author.id}`, date, 86400)
 
 
 } catch(err){
+  console.log(err)
   message.reply("Something Went Wrong")
 }
   }}

@@ -19,10 +19,10 @@
   "nodes":[
     
   {
-      "name": "Muzox Lavalink",
-      "host": "node1.kartadharta.xyz",
+      "name": "Nova Lavalink",
+      "host": "ssl.freelavalink.ga",
       "port": 443,
-      "password": "kdlavalink",
+      "password": "www.freelavalink.ga",
       "secure": true
   }
   ]

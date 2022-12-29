@@ -163,7 +163,7 @@ message.channel.send({embeds: [exist]})
     await user.save();
         
         
-  if (command) command.run(client, message, args)
+  if (command) command.run(client, message, args, prefix)
 
 } catch (error) {
     console.error(error)
