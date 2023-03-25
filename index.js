@@ -42,7 +42,10 @@ client.poru = new Poru(client, client.config.nodes,{
   reconnectTime: 30,
   resumeKey: "muzox",
   resumeTimeout: 60,
-  defaultPlatform: "scsearch"
+  defaultPlatform: "ytsearch",
+  spotify: {
+    playlistLimit: 10000,
+  }
     
 });
 client.commands = new discord.Collection();

@@ -13,11 +13,9 @@ module.exports = {
     sameVc: true,
     premium:true,
     run: async (client, message, args) => {
-
-       try {
-
+        let m;
+        try {
             const playlistName = args.join(' ').replace(/_/g, ' ');
-
 
             playlists.findOne({
               PlaylistName: playlistName,
@@ -28,21 +26,19 @@ module.exports = {
                 }
 
                 let player = client.poru.players.get(message.guild.id)
-        if(!player){
-         player = await client.poru.createConnection({
-            guildId: message.guild.id,
-            voiceChannel: message.member.voice.channel.id,
-            textChannel: message.channel.id,
-            selfDeaf: true,
-          })
-        }
-   
+                if(!player){
+                    player = await client.poru.createConnection({
+                        guildId: message.guild.id,
+                        voiceChannel: message.member.voice.channel.id,
+                        textChannel: message.channel.id,
+                        selfDeaf: true,
+                    })
+                }
 
-
-              const tracks =  p.songs;
-         const m = await message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<a:m_loading:1015561059786047558> Started loading **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
+                const tracks =  p.songs;
+                m = await message.reply({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<a:m_loading:1015561059786047558> Started loading **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
              
-                for (let i = 0; i <= p.songs.length; i++) {
+                for (let i = 0; i < p.songs.length; i++) {
 
                     if (tracks[i]) {
                         let search = await client.poru.spotify.fetch(tracks[i].title)
@@ -53,19 +49,16 @@ module.exports = {
      
                         player.queue.add(track)
                     }
-                    if(!player.isPlaying) player.play();
-               
-
-                
                 }
-await m.edit({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:success:984369679080509450> Loaded **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
+                if(!player.isPlaying) player.play();
+                await m.edit({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:success:984369679080509450> Loaded **${p.songs.length}** Tracks from Playlist **${playlistName}**`)]})
             });
 
         } catch (e) {
-            m.edit({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Can't load tracks from Playlist **${playlistName}**`)]})
-           console.log(e)
+            if (m) {
+                m.edit({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setDescription(`<:error:984369648818602005> Can't load tracks from Playlist **${playlistName}**`)]})
+            }
+            console.log(e)
         }
-
-
     }
 };

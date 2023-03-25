@@ -5,14 +5,15 @@ const User = require("../../Models/User");
 const discordJSVersion = packageJSON.dependencies["discord.js"];
 
 const os = require('os');
+const ms = require("ms")
 
 module.exports = {
 
-  name: "stats",
+  name: "about",
   description: "Stats of bot",
   aliases: ['stats', 'bi', 'botinfo'],
   run: async (client, message, args, prefix) => {
-    let connectedchannelsamount = 0;
+    let connectedchannelsamount = "22";
     let guilds = client.guilds.cache.map((guild) => guild);
     for (let i = 0; i < guilds.length; i++) {
       // if (guilds[i].me.voice.channel) connectedchannelsamount += 1;
@@ -44,8 +45,31 @@ module.exports = {
     const embed = new EmbedBuilder()
 
       .setColor(`${client.config.embedColor}`)
-      .setAuthor({ name: "Bot Information", iconURL: client.user.displayAvatarURL(), url: "https://discord.gg/bothub" })
-      .setDescription(`**Hi, I am ${client.user.username}!\nMy work is to provide you quality music!\n\nPlay the music directly by ${prefix}play <song>!**`)
+      .setAuthor({ name: `Potato <3#1474`, iconURL: "https://media.discordapp.net/attachments/1011309439510380578/1058717780964290620/IMG_20221005_132627.jpg", url: "https://discord.gg/yRWSH98pAs" })
+      .setDescription(`**[Bot Invite Link](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands)**`)
+      .addFields([
+        {
+          name: "ㅤ",
+          value: "NOTE: This Stats are Only of **Cluster 0**"
+        },
+        {
+          name: `__Information__`,
+          value: `\`\`\`ml
+
+Servers     : ${client.guilds.cache.size}
+Users       : ${users}
+Channels    : ${client.channels.cache.size}
+Commands    : ${client.commands.size}
+Uptime      : ${ms(client.uptime)}
+Shards      : ${message.guild.shard.id}/1
+Api         : ${client.ws.ping}\`\`\``
+        },
+        {
+          name: "Owner",
+          value: "**[Potato <3#1474](https://discord.com/users/803839409870602240)**, Special Thanks to all Supporters."
+        }
+      ])
+      /*.setDescription(`**Hi, I am ${client.user.username}!\nMy work is to provide you quality music!\n\nPlay the music directly by ${prefix}play <song>!**`)
       .addFields([
         {
           name: "Stats",
@@ -63,9 +87,9 @@ module.exports = {
         },
         {
           name: "General Information",
-          value: `➜ Connections: **${connectedchannelsamount}**\n➜ Platform: \`${os.platform()}\`\n➜ CPU Usage: \`${(process.cpuUsage().system / 1024 / 1024).toFixed(2)}%\`\n➜ RAM Usage: \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}Mb\`\n➜ Ping: \`${client.ws.ping}ms\`\n➜ Up Since: <t:${duration1}:R>`
+          value: `➜ Connections: **${connectedchannelsamount}**\n➜ Platform: \`${os.platform()}\`\n➜ CPU Usage: \`${(process.cpuUsage().system / 1024 / 1024).toFixed(2)}%\`\n➜ RAM Usage: \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}Mb\`\n➜ Ping: \`${client.ws.ping}ms\`\n➜ Up Since: `
         }
-      ])
+      ])*/
         /*.addField(`<:stats:985100769520930816> Stats`,
       `➜ **${client.guilds.cache.size}** Servers\n➜ **${users}** Users\n➜ **${client.channels.cache.size}** Channels\n`)
       .addField(`Command Used By You`,`${data.count}Commands`)
@@ -79,10 +103,10 @@ module.exports = {
       .addField(`<:djs:984372533002395720> Discord.JS Version`,`\`\`\`js\n${discordJSVersion}\`\`\``)
       .addField(`<:nodejs:984372538236891196> Node.JS Version`,`\`\`\`js\n${process.version}\`\`\``)
       .addField(`<:premiumbadge:967414570169802832> Poru  Version`,`\`\`\`js\n${client.poru.version}\`\`\``)*/
-      .setThumbnail(client.user.displayAvatarURL())
+      //.setThumbnail(client.user.displayAvatarURL())
       .setFooter({
-        text: `Thank you for using me!`,
-        iconURL: client.user.displayAvatarURL()
+        text: `Requested by ${message.author.tag}`,
+        iconURL: message.guild.iconURL()
       })
     message.channel.send({ embeds: [embed] })
 

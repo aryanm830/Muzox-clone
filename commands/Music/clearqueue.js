@@ -1,3 +1,4 @@
+const discord = require('discord.js');
 module.exports = {
   name: "clearqueue",
 aliases: ["cq", "clear"],
@@ -17,10 +18,21 @@ aliases: ["cq", "clear"],
 
     
     let queueLength = player.queue.length
-
+if (queueLength < 2) {
+ return message.reply({
+    embeds: [
+                  new discord.EmbedBuilder()
+                  .setDescription("**There is no song in the queue to be cleared!**")
+                  .setColor(client.config.embedColor)]
+  })
+}
     player.queue.clear();
-
-    message.reply(`<a:success:959656335044116490> Cleared all songs in queue.`)
-
+const e = new discord.EmbedBuilder()
+    .setColor(client.config.embedColor)
+    .setAuthor({
+      name: `Successfully cleared ${player.queue.length} songs from queue!`,
+      iconURL: client.user.displayAvatarURL()
+    })
+    
   }
 }

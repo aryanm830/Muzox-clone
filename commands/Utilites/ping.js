@@ -9,15 +9,9 @@ description: "gives the latency of bot",
         
          const ms = require('ms')
         const embed = new EmbedBuilder()
-        .setAuthor({name: "Pong 🏓", iconURL:client.user.displayAvatarURL()})
+        .setAuthor({name: `Ping | ${client.ws.ping}ms`, iconURL:message.author.displayAvatarURL()})
        .setColor(client.config.embedColor)
-.setDescription(`\`Pinging\`\n\`Pinging\`\n\`Pinging\``)
+
         const g = await message.channel.send({embeds: [embed]})
-        const da = await client.db.ping(ms)
-        const pi = new EmbedBuilder()
-        .setAuthor({name: "Pong 🏓", iconURL: client.user.displayAvatarURL()})
-.setColor(client.config.embedColor)
-.setDescription(`Gateway Ping : \`${client.ws.ping}ms\`\nREST Ping :  \`${g.createdTimestamp - message.createdTimestamp}ms\`\nDatabase Ping : \`${da}ms\``)
-    g.edit({embeds: [pi]})  
     }
 }

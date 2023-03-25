@@ -55,7 +55,7 @@ new EmbedBuilder()
 new EmbedBuilder()
 .setAuthor({name: 'Added Song To Queue', iconURL: message.author.displayAvatarURL({dynamic: true})})
              .setColor("#63e963")
-             .setDescription(`<a:emoji_46:938388856095514654> [${tracks.info.title}](${tracks.info.uri})\n\n**Requester: **<@${message.author.id}>`)   
+             .setDescription(`<a:emoji_46:938388856095514654> [${track.info.title}](${track.info.uri})\n\n**Requester: **<@${message.author.id}>`)   
 ]
                            });
         }

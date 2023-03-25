@@ -1,5 +1,5 @@
 
-const { Client, Message, EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require("discord.js");
+const { Client, Message, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
 const load = require('lodash');
 const { convertTime } = require('../../util/convert.js');
 
@@ -13,9 +13,9 @@ module.exports = {
     player: true,
     inVc: false,
     sameVc: false,
-   run: async (message, args, client, prefix) => {
+   run: async (client, message, args, prefix) => {
   
-            const player = client.poru.players.get(message.guild.id);
+            let player = client.poru.players.get(message.guild.id)
        const queue = player.queue;  
    if(!player) return message.channel.send({ embeds: [new EmbedBuilder().setColor(client.config.embedColor).setTimestamp().setDescription(`Nothing is playing right now.`)]});
             
@@ -24,7 +24,7 @@ module.exports = {
             if(player.queue.length === "0" || !player.queue.length) {
                 const embed = new EmbedBuilder()
                 .setColor(client.config.embedColor)
-                .setDescription(`🔊 Now Playing:\n [${player.currentTrack.info.title}](${player.currentTrack.info.uri}) • \`[${convertTime(player.currentTrack.info.duration-player.position)} left]\``)
+                .setDescription(`Now Playing:\n [${player.currentTrack.info.title}](${player.currentTrack.info.uri}) - \`[${convertTime(player.currentTrack.info.duration)} left]\``)
 
                 await message.channel.send({
                     embeds: [embed]
@@ -39,11 +39,11 @@ module.exports = {
                 if(player.queue.size < 11) {
                     const embed = new EmbedBuilder()
                     .setColor(client.config.embedColor)
-                    .setDescription(`**Now playing**\n<:emoji_66:975646921752449074> [${player.currentTrack.info.title}](${player.currentTrack.info.uri})\n<:emoji_69:970264635028680784> Author: ${player.currentTrack.info.author}\n<:emoji_70:970265771387281418> Requested by: ${player.currentTrack.info.requester.username}\n<:emoji_65:975642252942651413> Duration: \`${convertTime(player.currentTrack.info.duration)}\`\n\n🔊 Upcoming Songs\n${pages[page]}`)
+                    .setDescription(`**Now playing**\n<:emoji_66:975646921752449074> [${player.currentTrack.info.title}](${player.currentTrack.info.uri})\n<:emoji_69:970264635028680784> Author: ${player.currentTrack.info.author}\n<:emoji_70:970265771387281418> Requested by: ${player.currentTrack.info.requester.username}\n<:emoji_65:975642252942651413> Duration: \`\n\n🔊 Upcoming Songs\n${pages[page]}`)
                     
                     .setFooter({ text: `Page ${page + 1}/${pages.length}`, iconURL: message.author.displayAvatarURL({ dynamic: true })})
                     
-                    .setAuthor({text:`Music Queue`,iconURL:client.user.displayAvatarURL({dynamic: true})})
+                    .setAuthor({name:`Music Queue`,iconURL:client.user.displayAvatarURL({dynamic: true})})
 
                     await message.channel.send({
                         embeds: [embed]
@@ -51,30 +51,32 @@ module.exports = {
                 } else {
                     const embed2 = new EmbedBuilder()
                     .setColor(client.config.embedColor)
-                    .setDescription(`**Now playing**\n<:emoji_66:975646921752449074> [${player.currentTrack.info.title}](${player.currentTrack.info.uri})\n<:emoji_69:970264635028680784> Author: ${player.currentTrack.info.author}\n<:emoji_70:970265771387281418> Requested by: ${player.currentTrack.info.requester.username}\n<:emoji_65:975642252942651413> Duration: \`${convertTime(player.currentTrack.info.duration)}\`\n\n🔊 Upcoming Songs\n${pages[page]}`)
+                    .setDescription(`**Now playing**\n<:emoji_66:975646921752449074> [${player.currentTrack.info.title}](${player.currentTrack.info.uri})\n<:emoji_69:970264635028680784> Author: ${player.currentTrack.info.author}\n<:emoji_70:970265771387281418> Requested by: ${player.currentTrack.info.requester.username}\n<:emoji_65:975642252942651413> Duration: \`\n\n🔊 Upcoming Songs\n${pages[page]}`)
                     
-                    .setFooter(`Page ${page + 1}/${pages.length}`)
+                    .setFooter({
+                      text: `Page ${page + 1}/${pages.length}`
+                    })
                     
-                    .setAuthor({text:'Music Queue',iconURL:client.user.displayAvatarURL({dynamic: true})})
+                    .setAuthor({name:'Music Queue',iconURL:client.user.displayAvatarURL({dynamic: true})})
                     
 
                     const but1 = new ButtonBuilder()
                     .setCustomId("queue_cmd_but_1")
                   
-.setLabel("Nex Page")                    .setEmoji("973804130663555102")
-                    .setStyle("SECONDARY")
+.setLabel("Next Page")                    .setEmoji("973804130663555102")
+                    .setStyle(ButtonStyle.Secondary)
 
                     const but2 = new ButtonBuilder()
                     .setCustomId("queue_cmd_but_2")
                     
 .setLabel("Prev Page")
                     .setEmoji("973804190080061492")
-                    .setStyle("SECONDARY")
+                    .setStyle(ButtonStyle.Secondary)
 
                     const but3 = new ButtonBuilder()
                     .setCustomId("queue_cmd_but_3")
                     .setLabel(`${page + 1}/${pages.length}`)
-                    .setStyle("SECONDARY")
+                    .setStyle(ButtonStyle.Secondary)
                     .setDisabled(true)
 
                     const row1 = new ActionRowBuilder().addComponents([
@@ -110,7 +112,7 @@ module.exports = {
                             
                             .setFooter(`Page ${page + 1}/${pages.length}`)
                             
-                    .setAuthor({text:'Music Queue',iconURL:client.user.displayAvatarURL()})
+                    .setAuthor({name:'Music Queue',iconURL:client.user.displayAvatarURL()})
                             
 
                             await msg.edit({
@@ -127,7 +129,7 @@ module.exports = {
                             
                             .setFooter(`Page ${page + 1}/${pages.length}+`)
                            
-                                                .setAuthor({text:'Music Queue',iconURL:client.user.displayAvatarURL()})
+                                                .setAuthor({name:'Music Queue',iconURL:client.user.displayAvatarURL()})
 
 
                             await msg.edit({

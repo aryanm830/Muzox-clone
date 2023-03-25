@@ -10,7 +10,7 @@ let tr = track.info.title;
     .setAuthor({name:`Now Playing`,iconURL:client.user.displayAvatarURL()})
 .setColor(client.config.embedColor) 
 
-    .setDescription(`[${result}](${track.info.uri}) by ${track.info.author}・ ${track.info.requester} ${convertTime(track.info.duration)}`)
+    .setDescription(`**[${result}](${track.info.uri})\nDuration - ${convertTime(track.info.length)}**`)
 
   const pause = new ButtonBuilder().setCustomId("pause").setEmoji("1023159510581379082").setStyle("Secondary");
   const rewind = new ButtonBuilder().setCustomId("rewind").setEmoji("1023159244943536218").setStyle("Secondary");
@@ -30,9 +30,9 @@ let tr = track.info.title;
 
   
  
-   const row = new ActionRowBuilder().addComponents(previous,rewind,pause,forward,skip);
+   const row = new ActionRowBuilder().addComponents(previous, rewind,pause,forward,skip);
    const row1 = new ActionRowBuilder().addComponents(loop,shuffle,queue,stop);
-   const channel = client.channels.cache.get(player.textChannel)
+   const channel =  client.channels.cache.get(player.textChannel)
 return channel?.send({ embeds: [embed], components: [row, row1] }).then(x => player.message = x)
 
 }

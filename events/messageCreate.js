@@ -68,17 +68,37 @@ const ch = message.guild.channels.cache.get(p1.voiceChannel);
             }
         
         if (message.author.bot || !message.guild) return;
+    /*let datab = ['701643179212013568', '921100377565302785', '558400760245911582'];
+
+const mentionRegex = RegExp(`^<@!?${client.user.id}>$`); const mentionRegexPrefix = RegExp(`^<@!?${client.user.id}>`)
+
+const prefix1 = message.content.match(mentionRegexPrefix) ? message.content.match(mentionRegexPrefix)[0] : prefix;
+    
+ if(!datab.includes(message.author.id)){
+                if (!message.content.startsWith(prefix1)) return;
+            } 
+
+
+    const args = datab.includes(message.author.id) == false ? message.content.slice(prefix1.length).trim().split(/ +/) :  message.content.startsWith(prefix1) == true ? message.content.slice(prefix1.length).trim().split(/ +/) : message.content.trim().split(/ +/);
+
+    const commandName = args.shift().toLowerCase();
+
+    const command = client.commands.get(commandName) ||
+        client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
+*/
         
         
-        
-         if (!message.content.startsWith(prefix)) return;
+       const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+        const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
+        if (!prefixRegex.test(message.content)) return;
+
+        const [matchedPrefix] = message.content.match(prefixRegex);
+
         
  if (!message.member) message.guild.fetchMembers(message);
   
- const args = message.content
- .slice(prefix.length)
- .trim()
- .split(/ +/g);
+ const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
 
 
 
@@ -108,14 +128,14 @@ const ch = message.guild.channels.cache.get(p1.voiceChannel);
     if (command.inVc && !memberChannel) {
       const join = new EmbedBuilder()
       .setColor(`#ff0000`)
-        .setDescription(`<:error:938293159153238076> You must be in a voice channel to use this command!`)
+        .setDescription(`You must be in a voice channel to use this command!`)
       return message.channel.send({embeds: [join]})
     }
   
   if (command.sameVc && player && botChannel !== memberChannel) {
 const same = new EmbedBuilder()
       .setColor(`#ff0000`)
-        .setDescription(`<:error:938293159153238076> You must be in the same voice channel as me to use this command!`) 
+        .setDescription(`You must be in the same voice channel as me to use this command!`) 
     return message.channel.send({embeds: [same]})
 
 
@@ -124,7 +144,7 @@ const same = new EmbedBuilder()
   if (command.player && !player) {
     const exist = new EmbedBuilder()
       .setColor(`#ff0000`)
-        .setDescription(`<:error:938293159153238076> There is nothing playing in this server!`) 
+        .setDescription(`There is nothing playing in this server!`) 
 
 
 return message.channel.send({embeds: [exist]})
@@ -133,7 +153,7 @@ return message.channel.send({embeds: [exist]})
 
 const exist = new EmbedBuilder()
       .setColor(`#ff0000`)
-        .setDescription(`<:error:938293159153238076> There is nothing playing in this server!`) 
+        .setDescription(`There is nothing playing in this server!`) 
 
 
 message.channel.send({embeds: [exist]})
@@ -142,7 +162,7 @@ message.channel.send({embeds: [exist]})
   if (command.args && !args.length) {
     const provide = new EmbedBuilder()
     .setColor(`#ff0000`)
-    .setDescription(`<:error:938293159153238076> You didn't provide any arguments!`)
+    .setDescription(`You didn't provide any arguments!`)
     return message.channel.send({embeds: [provide]})
   }
   //nothinf
