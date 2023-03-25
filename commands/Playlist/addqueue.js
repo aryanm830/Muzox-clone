@@ -60,11 +60,4 @@ module.exports = {
                 }
 
             });
-        const embed = new EmbedBuilder()
-            .setAuthor(`Added Queue To Playlist ${Name}`, message.author.displayAvatarURL({dynamic: true}), "https://discord.gg/wrCzESkVzK")
-            .setDescription(`<a:queue:987713106450980865> **Total Tracks Added: ${playlist.length - oldSong.length}**`)
-            .setColor(client.config.embedColor)
-        return message.channel.send({ embeds: [embed] })
-
-    }
-}
+    }}

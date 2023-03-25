@@ -37,13 +37,15 @@ const { Database } = require("quickmongo");
 
 client.login(process.env.TOKEN).catch(e => console.log(e));
 
-
 client.config = require("./config.json");
 client.poru = new Poru(client, client.config.nodes,{
   reconnectTime: 30,
   resumeKey: "muzox",
   resumeTimeout: 60,
-  defaultPlatform: "scsearch"
+  defaultPlatform: "ytsearch",
+  spotify: {
+    playlistLimit: 10000,
+  }
     
 });
 client.commands = new discord.Collection();
@@ -97,7 +99,15 @@ process.on('unhandledRejection', (error) => {
 ["commands","events","PoruEvent"].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
+//wev server
+const express = require('express');
 
+const app = express();
 
+app.get('/', (req, res) => {
+  res.send('Hello Express app!')
+});
 
-
+app.listen(3000, () => {
+  console.log('server started');
+});

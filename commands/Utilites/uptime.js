@@ -12,7 +12,7 @@ const d = Math.round((Date.now() - client.uptime)/1000);
       const em = new EmbedBuilder()
       .setColor(client.config.embedColor)
 .setAuthor({name:`Last Rebooted`,iconURL: client.user.displayAvatarURL()})
-      .setDescription(`Uptime: ${ms(client.uptime)}\nLast Restarted: <t:${d}:R>`)
+      .setDescription(`Uptime: ${ms(client.uptime)}\nLast Reboot: <t:${d}:R>`)
       message.channel.send({embeds: [em]})
   }
   }

@@ -12,7 +12,7 @@ module.exports = {
     const player = await client.poru.createConnection({
       guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
+      textChannel: message.channel.id,
       selfDeaf: true,
       selfMute: false,
     })
@@ -33,7 +33,7 @@ if(player.queue.length > 0) {
 
       return message.channel.send({ embeds: [
 new EmbedBuilder()
-.setAuthor('Added Playlist To Queue', message.author.displayAvatarURL({dynamic: true}))
+.setAuthor({name: 'Added Playlist To Queue', iconURL: message.author.displayAvatarURL({dynamic: true})})
              .setColor("#63e963")
              .setDescription(`<a:emoji_46:938388856095514654> **${resolve.tracks.length}** Tracks From **${resolve.playlistInfo.name}**\n\n**Requester: **<@${message.author.id}>`),
            
@@ -53,9 +53,9 @@ new EmbedBuilder()
       if(player.queue.length > 0){
      return message.channel.send({ embeds: [
 new EmbedBuilder()
-.setAuthor('Added Song To Queue', message.author.displayAvatarURL({dynamic: true}))
+.setAuthor({name: 'Added Song To Queue', iconURL: message.author.displayAvatarURL({dynamic: true})})
              .setColor("#63e963")
-             .setDescription(`<a:emoji_46:938388856095514654> [${tracks.info.title}](${tracks.info.uri})\n\n**Requester: **<@${message.author.id}>`)   
+             .setDescription(`<a:emoji_46:938388856095514654> [${track.info.title}](${track.info.uri})\n\n**Requester: **<@${message.author.id}>`)   
 ]
                            });
         }

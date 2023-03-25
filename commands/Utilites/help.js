@@ -64,29 +64,54 @@ description: "Gives My All command info",
 
       const embed = new EmbedBuilder()
         .setTitle("Command: " + args[0])
-      
-        .addField(
+      .addFields([
+        
+        {
+          name: "Name:",
+          value: command.name ? `\`${command.name}\`` : "**Name not found!**"
+        },
+        {
+          name: "Aliases:",
+          value: command.aliases
+            ? `\`${command.aliases.join("` `")}\``
+            : "**No aliases found for this command.**"
+        },
+        {
+          name: "Usage:",
+          value: command.usage
+            ? `\`${command.name} ${command.usage}\``
+            : `\`${prefix}${command.name}\``
+        },
+{
+name: "Description:",
+  value: command.description
+            ? command.description
+            : "**No description found for this command.**"
+}
+
+      ])
+        /*embed.addField(
           "Name:",
           command.name ? `\`${command.name}\`` : "No name for this command."
         )
-        .addField(
+        embed.addField(
           "Aliases:",
           command.aliases
             ? `\`${command.aliases.join("` `")}\``
             : "No aliases for this command."
         )
-        .addField(
+        embed.addField(
           "Usage:",
           command.usage
             ? `\`=${command.name} ${command.usage}\``
             : `\`=${command.name}\``
         )
-        .addField(
+        embed.addField(
           "Description:",
           command.description
             ? command.description
             : "No description for this command."
-        )
+        )*/
      
         .setColor(client.config.embedColor);
       return message.channel.send({embeds:[embed]});
